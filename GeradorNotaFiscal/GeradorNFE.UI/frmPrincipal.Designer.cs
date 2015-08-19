@@ -93,6 +93,7 @@
             this.emitenteToolStripMenuItem.Name = "emitenteToolStripMenuItem";
             this.emitenteToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.emitenteToolStripMenuItem.Text = "&Emitente";
+            this.emitenteToolStripMenuItem.Click += new System.EventHandler(this.emitenteToolStripMenuItem_Click);
             // 
             // transportadoraToolStripMenuItem
             // 

@@ -10,18 +10,11 @@ using System.Windows.Forms;
 
 namespace GeradorNFE.UI
 {
-    public partial class frmPrincipal : Form
+    public partial class frmEmitente : Form
     {
-        public frmPrincipal()
+        public frmEmitente()
         {
             InitializeComponent();
-        }
-
-        private void emitenteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmEmitente frm = new frmEmitente();
-            frm.MdiParent = this;
-            frm.Show();
         }
     }
 }
