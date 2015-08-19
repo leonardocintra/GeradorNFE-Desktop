@@ -16,5 +16,10 @@ namespace GeradorNFE.UI
         {
             InitializeComponent();
         }
+
+        private void frmEmitente_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
