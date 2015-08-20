@@ -42,6 +42,16 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeradorNFE.DAO\GeradorNFE.DAO.csproj">
+      <Project>{3f68395c-910b-4809-8077-0e37aca178de}</Project>
+      <Name>GeradorNFE.DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GeradorNFE.Model\GeradorNFE.Model.csproj">
+      <Project>{3f829bb5-8472-4483-be2f-ad174cad2c8f}</Project>
+      <Name>GeradorNFE.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

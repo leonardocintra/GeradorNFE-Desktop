@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GeradorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Emitente">
+          <Key>
+            <PropertyRef Name="EmitenteId" />
+          </Key>
+          <Property Name="EmitenteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CNPJ" Type="bigint" Nullable="false" />
+          <Property Name="IE" Type="nvarchar" MaxLength="50" />
+          <Property Name="NomeRazao" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="NomeFantasia" Type="nvarchar" MaxLength="200" />
+          <Property Name="Fone" Type="nvarchar" MaxLength="50" />
+          <Property Name="CEP" Type="int" Nullable="false" />
+          <Property Name="Logradouro" Type="nvarchar" MaxLength="200" />
+          <Property Name="NumeroRua" Type="int" />
+          <Property Name="Complemento" Type="nvarchar" MaxLength="50" />
+          <Property Name="Bairro" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CodigoCidade" Type="int" Nullable="false" />
+          <Property Name="Cidade" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="UF" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="IM" Type="nvarchar" MaxLength="50" />
+          <Property Name="CNAE" Type="nvarchar" MaxLength="50" />
+          <Property Name="CodigoPais" Type="int" Nullable="false" />
+          <Property Name="Pais" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transportador">
+          <Key>
+            <PropertyRef Name="TransportadorId" />
+          </Key>
+          <Property Name="TransportadorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FretePorConta" Type="bit" Nullable="false" />
+          <Property Name="CNPJCPF" Type="bigint" Nullable="false" />
+          <Property Name="InscricaoEstadual" Type="nvarchar" MaxLength="50" />
+          <Property Name="NomeRazao" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Endereco" Type="nvarchar" MaxLength="200" />
+          <Property Name="CodigoCidade" Type="int" Nullable="false" />
+          <Property Name="Cidade" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="UF" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="ValorServico" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ValorBase" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Aliquota" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Valor" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CFOP" Type="nvarchar" MaxLength="50" />
+          <Property Name="CodigoCidadePlaca" Type="int" />
+          <Property Name="Placa" Type="nvarchar" MaxLength="14" />
+          <Property Name="UFPlaca" Type="char" MaxLength="2" />
+          <Property Name="RNTC" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="GeradorModelStoreContainer">
+          <EntitySet Name="Emitente" EntityType="Self.Emitente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transportador" EntityType="Self.Transportador" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GeradorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Emitente">
+          <Key>
+            <PropertyRef Name="EmitenteId" />
+          </Key>
+          <Property Name="EmitenteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CNPJ" Type="Int64" Nullable="false" />
+          <Property Name="IE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NomeRazao" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NomeFantasia" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Fone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CEP" Type="Int32" Nullable="false" />
+          <Property Name="Logradouro" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NumeroRua" Type="Int32" />
+          <Property Name="Complemento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Bairro" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CodigoCidade" Type="Int32" Nullable="false" />
+          <Property Name="Cidade" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UF" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="IM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CNAE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CodigoPais" Type="Int32" Nullable="false" />
+          <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transportador">
+          <Key>
+            <PropertyRef Name="TransportadorId" />
+          </Key>
+          <Property Name="TransportadorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FretePorConta" Type="Boolean" Nullable="false" />
+          <Property Name="CNPJCPF" Type="Int64" Nullable="false" />
+          <Property Name="InscricaoEstadual" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NomeRazao" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Endereco" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CodigoCidade" Type="Int32" Nullable="false" />
+          <Property Name="Cidade" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UF" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ValorServico" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ValorBase" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Aliquota" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Valor" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CFOP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CodigoCidadePlaca" Type="Int32" />
+          <Property Name="Placa" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="UFPlaca" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="RNTC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="GeradorEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Emitente" EntityType="Self.Emitente" />
+          <EntitySet Name="Transportador" EntityType="Self.Transportador" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GeradorModelStoreContainer" CdmEntityContainer="GeradorEntities">
+          <EntitySetMapping Name="Emitente">
+            <EntityTypeMapping TypeName="GeradorModel.Emitente">
+              <MappingFragment StoreEntitySet="Emitente">
+                <ScalarProperty Name="EmitenteId" ColumnName="EmitenteId" />
+                <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
+                <ScalarProperty Name="IE" ColumnName="IE" />
+                <ScalarProperty Name="NomeRazao" ColumnName="NomeRazao" />
+                <ScalarProperty Name="NomeFantasia" ColumnName="NomeFantasia" />
+                <ScalarProperty Name="Fone" ColumnName="Fone" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+                <ScalarProperty Name="Logradouro" ColumnName="Logradouro" />
+                <ScalarProperty Name="NumeroRua" ColumnName="NumeroRua" />
+                <ScalarProperty Name="Complemento" ColumnName="Complemento" />
+                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+                <ScalarProperty Name="CodigoCidade" ColumnName="CodigoCidade" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="UF" ColumnName="UF" />
+                <ScalarProperty Name="IM" ColumnName="IM" />
+                <ScalarProperty Name="CNAE" ColumnName="CNAE" />
+                <ScalarProperty Name="CodigoPais" ColumnName="CodigoPais" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transportador">
+            <EntityTypeMapping TypeName="GeradorModel.Transportador">
+              <MappingFragment StoreEntitySet="Transportador">
+                <ScalarProperty Name="TransportadorId" ColumnName="TransportadorId" />
+                <ScalarProperty Name="FretePorConta" ColumnName="FretePorConta" />
+                <ScalarProperty Name="CNPJCPF" ColumnName="CNPJCPF" />
+                <ScalarProperty Name="InscricaoEstadual" ColumnName="InscricaoEstadual" />
+                <ScalarProperty Name="NomeRazao" ColumnName="NomeRazao" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+                <ScalarProperty Name="CodigoCidade" ColumnName="CodigoCidade" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="UF" ColumnName="UF" />
+                <ScalarProperty Name="ValorServico" ColumnName="ValorServico" />
+                <ScalarProperty Name="ValorBase" ColumnName="ValorBase" />
+                <ScalarProperty Name="Aliquota" ColumnName="Aliquota" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="CFOP" ColumnName="CFOP" />
+                <ScalarProperty Name="CodigoCidadePlaca" ColumnName="CodigoCidadePlaca" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="UFPlaca" ColumnName="UFPlaca" />
+                <ScalarProperty Name="RNTC" ColumnName="RNTC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
