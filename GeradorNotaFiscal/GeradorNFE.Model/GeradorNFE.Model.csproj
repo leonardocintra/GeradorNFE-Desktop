@@ -70,6 +70,7 @@
       <DependentUpon>GeradorModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Endereco.cs" />
+    <Compile Include="Enuns.cs" />
     <Compile Include="GeradorModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

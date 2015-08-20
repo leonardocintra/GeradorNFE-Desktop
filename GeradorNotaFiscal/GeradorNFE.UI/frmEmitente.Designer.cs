@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnFiltro = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
@@ -90,6 +90,7 @@
             this.btnFiltro.TabIndex = 51;
             this.btnFiltro.Text = "Filtrar";
             this.btnFiltro.UseVisualStyleBackColor = true;
+            this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
             // 
             // btnExcluir
             // 
@@ -100,6 +101,7 @@
             this.btnExcluir.TabIndex = 50;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnEditar
             // 
@@ -110,6 +112,7 @@
             this.btnEditar.TabIndex = 49;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnNovo
             // 
@@ -119,6 +122,7 @@
             this.btnNovo.TabIndex = 48;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // txtFiltro
             // 
@@ -142,8 +146,8 @@
             this.dataGridEmitente.AllowUserToDeleteRows = false;
             this.dataGridEmitente.AllowUserToOrderColumns = true;
             this.dataGridEmitente.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridEmitente.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dataGridEmitente.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridEmitente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -154,6 +158,7 @@
             this.dataGridEmitente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridEmitente.Size = new System.Drawing.Size(884, 263);
             this.dataGridEmitente.TabIndex = 45;
+            this.dataGridEmitente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridEmitente_CellClick);
             // 
             // button1
             // 
@@ -163,6 +168,7 @@
             this.button1.TabIndex = 44;
             this.button1.Text = "Cancelar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblAcao
             // 
@@ -211,6 +217,7 @@
             this.linkPesquisaCEP.TabIndex = 45;
             this.linkPesquisaCEP.TabStop = true;
             this.linkPesquisaCEP.Text = "Pesquisar";
+            this.linkPesquisaCEP.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkPesquisaCEP_LinkClicked);
             // 
             // txtNumero
             // 
@@ -301,6 +308,7 @@
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(100, 20);
             this.txtTelefone.TabIndex = 15;
+            this.txtTelefone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefone_KeyPress);
             // 
             // txtPais
             // 
@@ -540,6 +548,7 @@
             this.btnSalvar.TabIndex = 41;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // frmEmitente
             // 
@@ -559,8 +568,9 @@
             this.Controls.Add(this.btnSalvar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmEmitente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gerenciamento de Emitente";
-            this.Load += new System.EventHandler(this.frmEmitente_Load);
+            this.Load += new System.EventHandler(this.frmEmitente_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEmitente)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
