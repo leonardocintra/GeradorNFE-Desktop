@@ -1,5 +1,6 @@
 ﻿using GeradorNFE.BLL;
 using GeradorNFE.Model;
+using GeradorNFE.UI.ClassForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,8 +15,6 @@ namespace GeradorNFE.UI
 {
     public partial class frmEmitente : Form
     {
-        EmitenteBLL emitenteBLL;
-
         public frmEmitente()
         {
             InitializeComponent();
@@ -30,74 +29,61 @@ namespace GeradorNFE.UI
         #region Metodos Privados
         private void SetEmitente(Enuns.TipoCrud tipoCrud)
         {
-            emitenteBLL = new EmitenteBLL();
             Emitente emitente = new Emitente();
 
-            emitente.NomeRazao = txtNomeRazao.Text;
-            emitente.CNPJ = Convert.ToInt64(txtCNPJ.Text.Replace(".", "").Replace("/", "").Replace("-", ""));
-            emitente.NomeFantasia = txtNomeFantasia.Text;
-            emitente.Bairro = txtBairro.Text;
-            emitente.CEP = int.Parse(txtCEP.Text.Replace("-", string.Empty));
-            emitente.Cidade = txtCidade.Text;
-            emitente.CNAE = txtCNAE.Text;
-            emitente.CodigoCidade = int.Parse(txtCodigoCidade.Text);
-            emitente.Complemento = txtComplemento.Text;
-            emitente.Fone = txtTelefone.Text;
-            emitente.IE = txtInscricaoEstatudal.Text;
-            emitente.IM = txtIM.Text;
-            emitente.Logradouro = txtEndereco.Text;
-            emitente.NumeroRua = string.IsNullOrEmpty(txtNumero.Text) ? emitente.NumeroRua.GetValueOrDefault() : int.Parse(txtNumero.Text);
-            emitente.UF = txtEstado.Text;
-            emitente.Pais = "BRASIL";
-            emitente.CodigoPais = 1058;
+            string mensagemException = Utilidade.GetMensagemParaException(tipoCrud);
 
-            if (tipoCrud.Equals(Enuns.TipoCrud.novo))
+            try
             {
-                try
+                #region set parameters
+                emitente.NomeRazao = txtNomeRazao.Text;
+                emitente.CNPJ = Convert.ToInt64(txtCNPJ.Text.Replace(".", "").Replace("/", "").Replace("-", ""));
+                emitente.NomeFantasia = txtNomeFantasia.Text;
+                emitente.Bairro = txtBairro.Text;
+                emitente.CEP = int.Parse(txtCEP.Text.Replace("-", string.Empty));
+                emitente.Cidade = txtCidade.Text;
+                emitente.CNAE = txtCNAE.Text;
+                emitente.CodigoCidade = int.Parse(txtCodigoCidade.Text);
+                emitente.Complemento = txtComplemento.Text;
+                emitente.Fone = txtTelefone.Text;
+                emitente.IE = txtInscricaoEstatudal.Text;
+                emitente.IM = txtIM.Text;
+                emitente.Logradouro = txtEndereco.Text;
+                emitente.NumeroRua = string.IsNullOrEmpty(txtNumero.Text) ? emitente.NumeroRua.GetValueOrDefault() : int.Parse(txtNumero.Text);
+                emitente.UF = txtEstado.Text;
+                emitente.Pais = "BRASIL";
+                emitente.CodigoPais = 1058;
+                #endregion
+
+                if (tipoCrud.Equals(Enuns.TipoCrud.novo))
                 {
-                    emitenteBLL.CadastrarEmitente(emitente);
-                    MessageBox.Show("Emitente cadastrado com sucesso!", "Cadastrado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    LimpaCampos();
-                    PreencherGrid();
-                    btnSalvar.Enabled = false;
+                    EmitenteBLL.CadastrarEmitente(emitente);
 
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Ocorreu um erro ao cadastrar o emitente! \nErro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else if (tipoCrud.Equals(Enuns.TipoCrud.update))
-            {
-                try
+                else if (tipoCrud.Equals(Enuns.TipoCrud.update))
                 {
                     emitente.EmitenteId = int.Parse(txtIdEmitente.Text);
-                    emitenteBLL.AtualizarEmitente(emitente);
-                    MessageBox.Show("Emitente alterado com sucesso!", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimpaCampos();
-                    PreencherGrid();
-                    btnSalvar.Enabled = false;
+                    EmitenteBLL.AtualizarEmitente(emitente);
+
                 }
-                catch (Exception ex)
+                else if (tipoCrud.Equals(Enuns.TipoCrud.delete))
                 {
-                    MessageBox.Show("Ocorreu um erro ao alterar o emitente! \nErro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    emitente.EmitenteId = int.Parse(txtIdEmitente.Text);
+                    EmitenteBLL.ExcluirEmitente(emitente);
                 }
+                else
+                {
+                    MessageBox.Show("Erro ao fazer operação no Emitente");
+                }
+
+                MessageBox.Show("Emitente " + mensagemException + " com sucesso!", "Emitente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                LimpaCampos();
+                PreencherGrid();
+                btnSalvar.Enabled = false;
             }
-            else if (tipoCrud.Equals(Enuns.TipoCrud.delete))
+            catch (Exception ex)
             {
-                try
-                {
-                    emitenteBLL.ExcluirEmitente(emitente);
-                    MessageBox.Show("Emitente excluido com sucesso!", "Excluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Ocorreu um erro ao excluir o emitente! \nErro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Erro ao fazer operação no Emitente");
+                MessageBox.Show("Ocorreu um erro ao " + mensagemException + " o emitente! \nErro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -151,8 +137,7 @@ namespace GeradorNFE.UI
 
         private void PreencherGrid()
         {
-            emitenteBLL = new EmitenteBLL();
-            dataGridEmitente.DataSource = emitenteBLL.BuscarEmitente();
+            dataGridEmitente.DataSource = EmitenteBLL.BuscarEmitente();
         }
 
         private void VerificaSePrimeiroRegistro()
@@ -242,8 +227,7 @@ namespace GeradorNFE.UI
         {
             try
             {
-                emitenteBLL = new EmitenteBLL();
-                dataGridEmitente.DataSource = emitenteBLL.BuscarEmitenteComParametro(txtFiltro.Text);
+                dataGridEmitente.DataSource = EmitenteBLL.BuscarEmitenteComParametro(txtFiltro.Text);
             }
             catch (Exception ex)
             {
@@ -326,7 +310,7 @@ namespace GeradorNFE.UI
                 List<Emitente> listEmitente = new List<Emitente>();
                 int idEmiente = Convert.ToInt32(dataGridEmitente[0, dataGridEmitente.CurrentRow.Index].Value.ToString());
 
-                emitente = emitenteBLL.BuscarEmitenteById(idEmiente);
+                emitente = EmitenteBLL.BuscarEmitenteById(idEmiente);
                 listEmitente.Add(emitente);
 
                 dataGridEmitente.DataSource = listEmitente;

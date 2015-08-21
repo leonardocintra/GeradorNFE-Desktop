@@ -11,7 +11,7 @@ namespace GeradorNFE.BLL
     public class TransportadorBLL
     {
 
-        public void ExcluirTransportador(Transportador transportador)
+        public static void ExcluirTransportador(Transportador transportador)
         {
             if (transportador.TransportadorId > 0)
                 TransportadorDAO.DeleteTransportador(transportador);
@@ -19,24 +19,24 @@ namespace GeradorNFE.BLL
                 throw new Exception("ID do transportador inválido para exclusão");
         }
 
-        public void CadastrarTransportador(Transportador transportador)
+        public static void CadastrarTransportador(Transportador transportador)
         {
             ValidaInformacoesTransportador(transportador);
             TransportadorDAO.SetTransportador(transportador);
         }
 
-        public void AtualizarTransportador(Transportador transportador)
+        public static void AtualizarTransportador(Transportador transportador)
         {
             ValidaInformacoesTransportador(transportador);
             TransportadorDAO.UpdateTransportador(transportador);
         }
 
-        public List<Transportador> BuscarTransportador()
+        public static List<Transportador> BuscarTransportador()
         {
             return TransportadorDAO.GetTransportador();
         }
 
-        public Transportador BuscarTransportadorById(int id)
+        public static Transportador BuscarTransportadorById(int id)
         {
             if (id > 0)
                 return TransportadorDAO.GetTransportadorById(id);
@@ -44,7 +44,7 @@ namespace GeradorNFE.BLL
                 return null;
         }
 
-        public List<Transportador> BuscarTransportadorComParametro(string parametro)
+        public static List<Transportador> BuscarTransportadorComParametro(string parametro)
         {
             if (parametro != string.Empty)
                 return TransportadorDAO.GetTransportadorByParameter(parametro);
@@ -52,7 +52,7 @@ namespace GeradorNFE.BLL
                 return TransportadorDAO.GetTransportador();
         }
 
-        private void ValidaInformacoesTransportador(Transportador transportador)
+        private static void ValidaInformacoesTransportador(Transportador transportador)
         {
             string cnpjCpf = transportador.CNPJCPF.ToString()
                 .Replace(".", string.Empty)
@@ -83,6 +83,12 @@ namespace GeradorNFE.BLL
 
             if (transportador.Cidade == string.Empty)
                 throw new Exception("Nome da cidade é obrigatório");
+
+            if(transportador.Aliquota != 0 || transportador.ValorBase != 0 || transportador.ValorServico != 0 && transportador.Valor == 0)
+                throw new Exception("Erro no calculo do valor da NF. Verifique.");
+
+            if(transportador.Valor > 0)
+                throw new Exception("Erro no calculo do valor da NF. \nAtualmente o sistema apenas gera um simples arquivo com os valores dos impostos = 0 (zero). \n Caso precise entre em contato com o desenvolvedor no email abaixo: \n leonardo.ncintra@outlook.com");
         }
     }
 }

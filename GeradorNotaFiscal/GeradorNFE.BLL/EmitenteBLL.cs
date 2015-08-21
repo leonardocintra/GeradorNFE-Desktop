@@ -11,7 +11,7 @@ namespace GeradorNFE.BLL
     public class EmitenteBLL
     {
 
-        public void ExcluirEmitente(Emitente emitente)
+        public static void ExcluirEmitente(Emitente emitente)
         {
             if (emitente.EmitenteId > 0)
                 EmitenteDAO.DeleteEmitente(emitente);
@@ -19,24 +19,24 @@ namespace GeradorNFE.BLL
                 throw new Exception("ID do emitente inválido para exclusão");
         }
 
-        public void CadastrarEmitente(Emitente emitente)
+        public static void CadastrarEmitente(Emitente emitente)
         {
             ValidaInformacoesEmitente(emitente);
             EmitenteDAO.SetEmitente(emitente);
         }
 
-        public void AtualizarEmitente(Emitente emitente)
+        public static void AtualizarEmitente(Emitente emitente)
         {
             ValidaInformacoesEmitente(emitente);
             EmitenteDAO.UpdateEmitente(emitente);
         }
 
-        public List<Emitente> BuscarEmitente()
+        public static List<Emitente> BuscarEmitente()
         {
             return EmitenteDAO.GetEmitente();
         }
 
-        public Emitente BuscarEmitenteById(int id)
+        public static Emitente BuscarEmitenteById(int id)
         {
             if (id > 0)
                 return EmitenteDAO.GetEmitenteById(id);
@@ -44,7 +44,7 @@ namespace GeradorNFE.BLL
                 return null;
         }
 
-        public List<Emitente> BuscarEmitenteComParametro(string parametro)
+        public static List<Emitente> BuscarEmitenteComParametro(string parametro)
         {
             if (parametro != string.Empty)
                 return EmitenteDAO.GetEmitenteByParameter(parametro);
@@ -52,7 +52,7 @@ namespace GeradorNFE.BLL
                 return EmitenteDAO.GetEmitente();
         }
 
-        private void ValidaInformacoesEmitente(Emitente emitente)
+        private static void ValidaInformacoesEmitente(Emitente emitente)
         {
             if (!Util.ValidaCNPJ.IsCnpj(emitente.CNPJ.ToString()))
                 throw new Exception("CNPJ inválido! Verifique e tente novamente");

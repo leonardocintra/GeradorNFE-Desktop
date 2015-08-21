@@ -23,5 +23,12 @@ namespace GeradorNFE.UI
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void transportadoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTransportador frm = new frmTransportador();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }
