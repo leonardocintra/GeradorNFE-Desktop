@@ -1,0 +1,45 @@
+CREATE TABLE [dbo].[Emitente]
+(
+	[EmitenteId] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [CNPJ] BIGINT NOT NULL, 
+    [IE] NVARCHAR(50) NULL, 
+    [NomeRazao] NVARCHAR(200) NOT NULL, 
+    [NomeFantasia] NVARCHAR(200) NULL, 
+    [Fone] NVARCHAR(50) NULL, 
+    [CEP] INT NOT NULL, 
+    [Logradouro] NVARCHAR(200) NULL, 
+    [NumeroRua] INT NULL, 
+    [Complemento] NVARCHAR(50) NULL, 
+    [Bairro] NVARCHAR(200) NOT NULL, 
+    [CodigoCidade] INT NOT NULL, 
+    [Cidade] NVARCHAR(200) NOT NULL, 
+    [UF] CHAR(2) NOT NULL, 
+    [IM] NVARCHAR(50) NULL, 
+    [CNAE] NVARCHAR(50) NULL, 
+    [CodigoPais] INT NOT NULL, 
+    [Pais] NVARCHAR(50) NOT NULL
+)
+
+CREATE TABLE [dbo].[Transportador]
+(
+    [TransportadorId] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [FretePorConta] BIT NOT NULL, 
+    [CNPJCPF] BIGINT NOT NULL, 
+    [InscricaoEstadual] NVARCHAR(50) NULL, 
+    [NomeRazao] NVARCHAR(200) NOT NULL, 
+    [Endereco] NVARCHAR(200) NULL, 
+    [CodigoCidade] INT NOT NULL, 
+    [Cidade] NVARCHAR(200) NOT NULL, 
+    [UF] CHAR(2) NOT NULL, 
+    [ValorServico] DECIMAL(18, 2) NULL, 
+    [ValorBase] DECIMAL(18, 2) NULL, 
+    [Aliquota] DECIMAL(18, 2) NULL, 
+    [Valor] DECIMAL(18, 2) NULL, 
+    [CFOP] NVARCHAR(50) NULL, 
+    [CodigoCidadePlaca] INT NULL, 
+    [Placa] NVARCHAR(14) NULL, 
+    [UFPlaca] CHAR(2) NULL, 
+    [RNTC] NVARCHAR(50) NULL
+)
+
+
