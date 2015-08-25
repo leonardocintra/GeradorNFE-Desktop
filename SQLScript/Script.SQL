@@ -20,6 +20,7 @@ CREATE TABLE [dbo].[Emitente]
     [Pais] NVARCHAR(50) NOT NULL
 )
 ALTER TABLE [dbo].[Emitente] ALTER COLUMN [CNPJ] VARCHAR (14) NOT NULL;
+ALTER TABLE [dbo].[Emitente] ALTER COLUMN [CEP] CHAR (8) NOT NULL;
 
 
 CREATE TABLE [dbo].[Transportador]
@@ -44,6 +45,10 @@ CREATE TABLE [dbo].[Transportador]
     [RNTC] NVARCHAR(50) NULL
 )
 ALTER TABLE [dbo].[Transportador] ALTER COLUMN [CNPJCPF] VARCHAR (14) NOT NULL;
+ALTER TABLE [dbo].[Transportador]
+    ADD [CEP]      CHAR (8) NULL,
+        [CEPPlaca] CHAR (8) NULL;
+
 
 CREATE TABLE [dbo].[Destinatario] (
     [Id]                INT            IDENTITY (1, 1) NOT NULL,
