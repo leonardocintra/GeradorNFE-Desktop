@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5989fe252165492e9637733c181618bb" Name="Diagram1">
-        <EntityTypeShape EntityType="GeradorModel.Emitente" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GeradorModel.Transportador" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GeradorModel.Emitente" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GeradorModel.Transportador" Width="1.5" PointX="2.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

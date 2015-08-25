@@ -16,7 +16,7 @@ namespace GeradorNFE.Model
     {
         public int TransportadorId { get; set; }
         public bool FretePorConta { get; set; }
-        public long CNPJCPF { get; set; }
+        public string CNPJCPF { get; set; }
         public string InscricaoEstadual { get; set; }
         public string NomeRazao { get; set; }
         public string Endereco { get; set; }

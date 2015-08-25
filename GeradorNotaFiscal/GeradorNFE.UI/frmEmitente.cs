@@ -37,7 +37,7 @@ namespace GeradorNFE.UI
             {
                 #region set parameters
                 emitente.NomeRazao = txtNomeRazao.Text;
-                emitente.CNPJ = Convert.ToInt64(txtCNPJ.Text.Replace(".", "").Replace("/", "").Replace("-", ""));
+                emitente.CNPJ = txtCNPJ.Text.Replace(".", "").Replace("/", "").Replace("-", "");
                 emitente.NomeFantasia = txtNomeFantasia.Text;
                 emitente.Bairro = txtBairro.Text;
                 emitente.CEP = int.Parse(txtCEP.Text.Replace("-", string.Empty));

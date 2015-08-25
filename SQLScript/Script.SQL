@@ -19,6 +19,8 @@ CREATE TABLE [dbo].[Emitente]
     [CodigoPais] INT NOT NULL, 
     [Pais] NVARCHAR(50) NOT NULL
 )
+ALTER TABLE [dbo].[Emitente] ALTER COLUMN [CNPJ] VARCHAR (14) NOT NULL;
+
 
 CREATE TABLE [dbo].[Transportador]
 (
@@ -41,5 +43,6 @@ CREATE TABLE [dbo].[Transportador]
     [UFPlaca] CHAR(2) NULL, 
     [RNTC] NVARCHAR(50) NULL
 )
+ALTER TABLE [dbo].[Transportador] ALTER COLUMN [CNPJCPF] VARCHAR (14) NOT NULL;
 
 

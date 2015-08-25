@@ -23,6 +23,7 @@ namespace GeradorNFE.UI
         private void frmTransportador_Load(object sender, EventArgs e)
         {
             txtNomeRazao.Focus();
+            PreencherGrid();
         }
 
         #region Privates
@@ -110,7 +111,7 @@ namespace GeradorNFE.UI
 
         private void PreencherGrid()
         {
-            throw new NotImplementedException();
+            dataGridView1.DataSource = TransportadorBLL.BuscarTransportador();
         }
 
         private void SetTranportadora(Enuns.TipoCrud tipoCrud)
@@ -124,12 +125,12 @@ namespace GeradorNFE.UI
                 #region set parameters
                 transportador.CFOP = txtCFOP.Text;
                 transportador.Cidade = txtCidade.Text;
-                transportador.CNPJCPF = Convert.ToInt64(txtCNPJ.Text
+                transportador.CNPJCPF = txtCNPJ.Text
                     .Replace(".", string.Empty)
                     .Replace(",", string.Empty)
                     .Replace("/", string.Empty)
                     .Replace("-", string.Empty)
-                    .Trim());
+                    .Trim();
                 transportador.CodigoCidade = Convert.ToInt32(txtCodigoCidade.Text);
                 transportador.CodigoCidadePlaca = Convert.ToInt32(txtCodigoCidadePlaca.Text);
                 transportador.Endereco = txtEndereco.Text;
@@ -201,17 +202,37 @@ namespace GeradorNFE.UI
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-
+            btnSalvar.Enabled = true;
+            DesbloquearCampos(true);
+            lblAcao.Text = "Editar";
+            txtNomeRazao.Focus();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (MessageBox.Show("Deseja excluir esse transportador?", "Exluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    SetTranportadora(Enuns.TipoCrud.delete);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao excluir: Erro " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnFiltro_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                dataGridView1.DataSource = TransportadorBLL.BuscarTransportadorComParametro(txtFiltro.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -225,7 +246,7 @@ namespace GeradorNFE.UI
             {
                 txtCNPJ.Clear();
                 txtCNPJ.Mask = "000.000.000-00";
-                lblCnpjCpf.Text = "CPF";
+                lblCnpjCpf.Text = "CPF:";
                 linkCpfCnpj.Text = "Usar CNPJ";
                 txtCNPJ.Focus();
             }
@@ -233,7 +254,7 @@ namespace GeradorNFE.UI
             {
                 txtCNPJ.Clear();
                 txtCNPJ.Mask = "000.000.000/0000-0";
-                lblCnpjCpf.Text = "CNPJ";
+                lblCnpjCpf.Text = "CNPJ:";
                 linkCpfCnpj.Text = "Usar CPF";
                 txtCNPJ.Focus();
             }
@@ -253,13 +274,17 @@ namespace GeradorNFE.UI
                 if (endereco.CEP == null)
                 {
                     MessageBox.Show("CEP não encontrado ou inválido! Tente novamente", "CEP não encontrado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    txtCEP.Clear();
+                    txtCEPPlaca.Clear();
                 }
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao buscar CEP! \nErro: " + ex.Message, "Erro CEP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                txtCEPPlaca.Focus();
             }
         }
 
@@ -301,6 +326,7 @@ namespace GeradorNFE.UI
 
         #endregion
 
+        #region Calculo de valores
         private void txtValorServico_KeyPress(object sender, KeyPressEventArgs e)
         {
             ValidaValorDecinal(sender, e);
@@ -329,6 +355,47 @@ namespace GeradorNFE.UI
         private void txtAliquota_TextChanged(object sender, EventArgs e)
         {
             SomaValorImposto();
+        }
+        #endregion
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DesbloquearCampos(false);
+            btnEditar.Enabled = true;
+            try
+            {
+                txtIdTransportador.Text = dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString();
+                cbxFretePorConta.Checked = dataGridView1[1, dataGridView1.CurrentRow.Index].Value != null ? true : false;
+                txtCNPJ.Text = dataGridView1[2, dataGridView1.CurrentRow.Index].Value.ToString();
+                txtInscricaoEstadual.Text = dataGridView1[3, dataGridView1.CurrentRow.Index].Value.ToString();
+                txtNomeRazao.Text = dataGridView1[4, dataGridView1.CurrentRow.Index].Value.ToString();
+                txtEndereco.Text = dataGridView1[5, dataGridView1.CurrentRow.Index].Value.ToString();
+                txtCodigoCidade.Text = dataGridView1[6, dataGridView1.CurrentRow.Index].Value.ToString();
+                txtCidade.Text = dataGridView1[7, dataGridView1.CurrentRow.Index].Value.ToString();
+                txtEstado.Text = dataGridView1[8, dataGridView1.CurrentRow.Index].Value.ToString();
+                txtValorServico.Text = dataGridView1[9, dataGridView1.CurrentRow.Index].Value.ToString();
+                txtValorBase.Text = dataGridView1[10, dataGridView1.CurrentRow.Index].Value.ToString();
+                txtAliquota.Text = dataGridView1[11, dataGridView1.CurrentRow.Index].Value.ToString();
+                txtValorTotal.Text = dataGridView1[12, dataGridView1.CurrentRow.Index].Value.ToString();
+                txtCFOP.Text = dataGridView1[13, dataGridView1.CurrentRow.Index].Value.ToString();
+                txtCodigoCidadePlaca.Text = dataGridView1[14, dataGridView1.CurrentRow.Index].Value.ToString();
+                txtPlaca.Text = dataGridView1[15, dataGridView1.CurrentRow.Index].Value.ToString();
+                txtUFPlaca.Text = dataGridView1[16, dataGridView1.CurrentRow.Index].Value.ToString();
+                txtRNTC.Text = dataGridView1[17, dataGridView1.CurrentRow.Index].Value.ToString();
+
+            }
+            catch
+            {
+                Transportador transportador = new Transportador();
+                List<Transportador> listEmitente = new List<Transportador>();
+                int idTransportador = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString());
+
+                transportador = TransportadorBLL.BuscarTransportadorById(idTransportador);
+                listEmitente.Add(transportador);
+
+                dataGridView1.DataSource = listEmitente;
+                PreencherGrid();
+            }
         }
     }
 }

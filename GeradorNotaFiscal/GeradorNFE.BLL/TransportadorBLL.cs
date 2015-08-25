@@ -54,18 +54,12 @@ namespace GeradorNFE.BLL
 
         private static void ValidaInformacoesTransportador(Transportador transportador)
         {
-            string cnpjCpf = transportador.CNPJCPF.ToString()
-                .Replace(".", string.Empty)
-                .Replace("-", string.Empty)
-                .Replace("/", string.Empty)
-                .Trim();
-
-            if (cnpjCpf.Length.Equals(11))
+            if (transportador.CNPJCPF.Length.Equals(11))
             {
                 if (!Util.ValidaCPF.IsCpf(transportador.CNPJCPF.ToString()))
                     throw new Exception("CPF inválido! Verifique e tente novamente");
             }
-            else if (cnpjCpf.Length.Equals(14))
+            else if (transportador.CNPJCPF.Length.Equals(14))
             {
                 if (!Util.ValidaCNPJ.IsCnpj(transportador.CNPJCPF.ToString()))
                     throw new Exception("CNPJ inválido! Verifique e tente novamente");

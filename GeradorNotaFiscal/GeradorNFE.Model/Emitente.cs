@@ -15,7 +15,7 @@ namespace GeradorNFE.Model
     public partial class Emitente
     {
         public int EmitenteId { get; set; }
-        public long CNPJ { get; set; }
+        public string CNPJ { get; set; }
         public string IE { get; set; }
         public string NomeRazao { get; set; }
         public string NomeFantasia { get; set; }
