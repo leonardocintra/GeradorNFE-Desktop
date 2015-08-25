@@ -1,0 +1,121 @@
+NFe.CriarEnviarNFe("[Identificacao]
+NaturezaOperacao=VENDA MERC. ADQ. NO ESTADO
+Modelo=55
+Serie=01
+Codigo=220724
+Numero=7915
+Emissao=08/08/2015
+Saida=08/08/2015
+Tipo=1
+FormaPag=0
+idDest =1
+[Emitente]
+CNPJ=12345678901234
+IE=12345678910
+Razao=R. R. RIBEIRO INSUMOS AGRICOLAS LTDA
+Fantasia=CASA DO AGRICULTOR - FILIAL CASSIA
+Fone=(35)3541-2769
+CEP=37980000
+Logradouro=AVENIDA SANTA RITA
+Numero=720
+Complemento=
+Bairro=CENTRO
+CidadeCod=3115102
+Cidade=CASSIA
+UF=MG
+IM=
+CNAE=4683400
+PaisCod=1058
+Pais=BRASIL
+[Destinatario]
+CNPJ=72654376672
+indIEDest=1
+IE=ISENTO
+ISUF=
+NomeRazao=RODRIGO DIAS DA SILVEIRA
+Fone=3591780910
+CEP=37990000
+Logradouro=BARÃO DO RIO BRANCO
+Numero=400
+Complemento=
+Bairro=CENTRO
+CidadeCod=
+Cidade=IBIRACI
+UF=MG
+PaisCod=1058
+Pais=BRASIL
+[Produto001]
+CFOP=5102
+Codigo=110
+EAN=
+NCM=31052000
+Descricao=ADUBO 08.20.10 YARA
+Unidade=TN
+Quantidade=0,10
+ValorUnitario=1400,00
+ValorTotal=140,00
+[ICMS001]
+CST=40
+Origem=0
+ValorBase=0,00
+Aliquota=0,00
+Valor=0,00
+[PIS001]
+CST=06
+ValorBase= 0
+Aliquota= 0
+Valor= 0
+Quantidade= 0
+ValorAliquota= 0
+[COFINS001]
+CST=06
+Valor= 0
+Aliquota= 0
+Quantidade= 0
+ValorAliquota= 0
+ValorBase= 0
+[Total]
+BaseICMS=0,00
+ValorICMS=0,00
+ValorProduto=140,00
+ValorServicos=0
+ValorBaseISS=0
+ValorISSQN=0
+ValorNota=140,00
+[Transportador]
+FretePorConta=1
+CnpjCpf=
+IE=
+NomeRazao=RODRIGO DIAS DA SILVEIRA
+Endereco=
+CidadeCod=
+Cidade=CASSIA
+UF=MG
+ValorServico=
+ValorBase=
+Aliquota=
+Valor=
+CFOP=
+CidadeCod=
+Placa=
+UFPlaca=
+RNTC=
+[Volume001]
+Quantidade=
+Especie=
+Marca=
+Numeracao=
+PesoLiquido=
+PesoBruto=
+[Fatura]
+Numero= 007915
+ValorOriginal=140,00
+ValorDesconto=
+ValorLiquido=140,00
+[Duplicata001]
+Numero=007915-1
+DataVencimento=08/08/2015
+Valor=140,00
+[DadosAdicionais]
+Complemento=CODIGO INTERNO 36366. -; ICMS DIFERIDO CONF ART 8, ANEXO II, ITEM 25 RICMS; ** "
+,1,1)
