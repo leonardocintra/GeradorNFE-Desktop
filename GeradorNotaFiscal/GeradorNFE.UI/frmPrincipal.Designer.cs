@@ -37,6 +37,7 @@
             this.emitenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transportadoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.destinatarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gerarArquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +45,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.arquivoToolStripMenuItem,
-            this.menuToolStripMenuItem});
+            this.menuToolStripMenuItem,
+            this.gerarArquivoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(819, 24);
@@ -107,6 +109,14 @@
             this.destinatarioToolStripMenuItem.Name = "destinatarioToolStripMenuItem";
             this.destinatarioToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.destinatarioToolStripMenuItem.Text = "&Destinatario";
+            this.destinatarioToolStripMenuItem.Click += new System.EventHandler(this.destinatarioToolStripMenuItem_Click);
+            // 
+            // gerarArquivoToolStripMenuItem
+            // 
+            this.gerarArquivoToolStripMenuItem.Name = "gerarArquivoToolStripMenuItem";
+            this.gerarArquivoToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.gerarArquivoToolStripMenuItem.Text = "&Gerar Arquivo!";
+            this.gerarArquivoToolStripMenuItem.Click += new System.EventHandler(this.gerarArquivoToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -137,5 +147,6 @@
         private System.Windows.Forms.ToolStripMenuItem emitenteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transportadoraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem destinatarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gerarArquivoToolStripMenuItem;
     }
 }

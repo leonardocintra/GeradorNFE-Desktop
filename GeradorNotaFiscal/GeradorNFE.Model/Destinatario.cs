@@ -12,25 +12,24 @@ namespace GeradorNFE.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Emitente
+    public partial class Destinatario
     {
-        public int EmitenteId { get; set; }
+        public int DestinatarioId { get; set; }
         public string CNPJ { get; set; }
-        public string IE { get; set; }
+        public Nullable<int> IndIEDest { get; set; }
+        public string InscricaoEstadual { get; set; }
+        public string ISUF { get; set; }
         public string NomeRazao { get; set; }
-        public string NomeFantasia { get; set; }
         public string Fone { get; set; }
         public string CEP { get; set; }
         public string Logradouro { get; set; }
-        public Nullable<int> NumeroRua { get; set; }
+        public Nullable<int> NumeroCasa { get; set; }
         public string Complemento { get; set; }
         public string Bairro { get; set; }
-        public int CodigoCidade { get; set; }
+        public int CidadeCodigo { get; set; }
         public string Cidade { get; set; }
         public string UF { get; set; }
-        public string IM { get; set; }
-        public string CNAE { get; set; }
-        public int CodigoPais { get; set; }
+        public int PaisCodigo { get; set; }
         public string Pais { get; set; }
     }
 }

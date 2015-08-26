@@ -71,6 +71,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassForm\Utilidade.cs" />
+    <Compile Include="frmDestinatario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDestinatario.Designer.cs">
+      <DependentUpon>frmDestinatario.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEmitente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmDestinatario.resx">
+      <DependentUpon>frmDestinatario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEmitente.resx">
       <DependentUpon>frmEmitente.cs</DependentUpon>
     </EmbeddedResource>

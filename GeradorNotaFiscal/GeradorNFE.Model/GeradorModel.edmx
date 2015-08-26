@@ -5,6 +5,28 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="GeradorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Destinatario">
+          <Key>
+            <PropertyRef Name="DestinatarioId" />
+          </Key>
+          <Property Name="DestinatarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CNPJ" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="IndIEDest" Type="int" />
+          <Property Name="InscricaoEstadual" Type="varchar" MaxLength="14" />
+          <Property Name="ISUF" Type="varchar" MaxLength="50" />
+          <Property Name="NomeRazao" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Fone" Type="varchar" MaxLength="12" />
+          <Property Name="CEP" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="Logradouro" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="NumeroCasa" Type="int" />
+          <Property Name="Complemento" Type="nvarchar" MaxLength="50" />
+          <Property Name="Bairro" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CidadeCodigo" Type="int" Nullable="false" />
+          <Property Name="Cidade" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="UF" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="PaisCodigo" Type="int" Nullable="false" />
+          <Property Name="Pais" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Emitente">
           <Key>
             <PropertyRef Name="EmitenteId" />
@@ -15,7 +37,7 @@
           <Property Name="NomeRazao" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="NomeFantasia" Type="nvarchar" MaxLength="200" />
           <Property Name="Fone" Type="nvarchar" MaxLength="50" />
-          <Property Name="CEP" Type="int" Nullable="false" />
+          <Property Name="CEP" Type="char" MaxLength="8" Nullable="false" />
           <Property Name="Logradouro" Type="nvarchar" MaxLength="200" />
           <Property Name="NumeroRua" Type="int" />
           <Property Name="Complemento" Type="nvarchar" MaxLength="50" />
@@ -50,8 +72,11 @@
           <Property Name="Placa" Type="nvarchar" MaxLength="14" />
           <Property Name="UFPlaca" Type="char" MaxLength="2" />
           <Property Name="RNTC" Type="nvarchar" MaxLength="50" />
+          <Property Name="CEP" Type="char" MaxLength="8" />
+          <Property Name="CEPPlaca" Type="char" MaxLength="8" />
         </EntityType>
         <EntityContainer Name="GeradorModelStoreContainer">
+          <EntitySet Name="Destinatario" EntityType="Self.Destinatario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Emitente" EntityType="Self.Emitente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transportador" EntityType="Self.Transportador" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -62,6 +87,7 @@
         <EntityContainer Name="GeradorEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Emitente" EntityType="GeradorModel.Emitente" />
           <EntitySet Name="Transportador" EntityType="GeradorModel.Transportador" />
+          <EntitySet Name="Destinatario" EntityType="GeradorModel.Destinatario" />
         </EntityContainer>
         <EntityType Name="Emitente">
           <Key>
@@ -73,7 +99,7 @@
           <Property Name="NomeRazao" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="NomeFantasia" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Fone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CEP" Type="Int32" Nullable="false" />
+          <Property Name="CEP" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
           <Property Name="Logradouro" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="NumeroRua" Type="Int32" />
           <Property Name="Complemento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -108,6 +134,30 @@
           <Property Name="Placa" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
           <Property Name="UFPlaca" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="RNTC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CEP" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="CEPPlaca" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Destinatario">
+          <Key>
+            <PropertyRef Name="DestinatarioId" />
+          </Key>
+          <Property Name="DestinatarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CNPJ" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="IndIEDest" Type="Int32" />
+          <Property Name="InscricaoEstadual" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="ISUF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NomeRazao" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Fone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="CEP" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="Logradouro" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NumeroCasa" Type="Int32" />
+          <Property Name="Complemento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Bairro" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CidadeCodigo" Type="Int32" Nullable="false" />
+          <Property Name="Cidade" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UF" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="PaisCodigo" Type="Int32" Nullable="false" />
+          <Property Name="Pais" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -142,6 +192,8 @@
           <EntitySetMapping Name="Transportador">
             <EntityTypeMapping TypeName="GeradorModel.Transportador">
               <MappingFragment StoreEntitySet="Transportador">
+                <ScalarProperty Name="CEPPlaca" ColumnName="CEPPlaca" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
                 <ScalarProperty Name="RNTC" ColumnName="RNTC" />
                 <ScalarProperty Name="UFPlaca" ColumnName="UFPlaca" />
                 <ScalarProperty Name="Placa" ColumnName="Placa" />
@@ -160,6 +212,29 @@
                 <ScalarProperty Name="CNPJCPF" ColumnName="CNPJCPF" />
                 <ScalarProperty Name="FretePorConta" ColumnName="FretePorConta" />
                 <ScalarProperty Name="TransportadorId" ColumnName="TransportadorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Destinatario">
+            <EntityTypeMapping TypeName="GeradorModel.Destinatario">
+              <MappingFragment StoreEntitySet="Destinatario">
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="PaisCodigo" ColumnName="PaisCodigo" />
+                <ScalarProperty Name="UF" ColumnName="UF" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="CidadeCodigo" ColumnName="CidadeCodigo" />
+                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+                <ScalarProperty Name="Complemento" ColumnName="Complemento" />
+                <ScalarProperty Name="NumeroCasa" ColumnName="NumeroCasa" />
+                <ScalarProperty Name="Logradouro" ColumnName="Logradouro" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+                <ScalarProperty Name="Fone" ColumnName="Fone" />
+                <ScalarProperty Name="NomeRazao" ColumnName="NomeRazao" />
+                <ScalarProperty Name="ISUF" ColumnName="ISUF" />
+                <ScalarProperty Name="InscricaoEstadual" ColumnName="InscricaoEstadual" />
+                <ScalarProperty Name="IndIEDest" ColumnName="IndIEDest" />
+                <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
+                <ScalarProperty Name="DestinatarioId" ColumnName="DestinatarioId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

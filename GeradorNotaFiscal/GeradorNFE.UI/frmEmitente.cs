@@ -3,12 +3,6 @@ using GeradorNFE.Model;
 using GeradorNFE.UI.ClassForm;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GeradorNFE.UI
@@ -32,6 +26,7 @@ namespace GeradorNFE.UI
             Emitente emitente = new Emitente();
 
             string mensagemException = Utilidade.GetMensagemParaException(tipoCrud);
+            string mensagemCrud = Utilidade.GetMensagemParaCrud(tipoCrud);
 
             try
             {
@@ -40,7 +35,7 @@ namespace GeradorNFE.UI
                 emitente.CNPJ = txtCNPJ.Text.Replace(".", "").Replace("/", "").Replace("-", "");
                 emitente.NomeFantasia = txtNomeFantasia.Text;
                 emitente.Bairro = txtBairro.Text;
-                emitente.CEP = int.Parse(txtCEP.Text.Replace("-", string.Empty));
+                emitente.CEP = txtCEP.Text.Replace("-", string.Empty);
                 emitente.Cidade = txtCidade.Text;
                 emitente.CNAE = txtCNAE.Text;
                 emitente.CodigoCidade = int.Parse(txtCodigoCidade.Text);
@@ -76,7 +71,7 @@ namespace GeradorNFE.UI
                     MessageBox.Show("Erro ao fazer operação no Emitente");
                 }
 
-                MessageBox.Show("Emitente " + mensagemException + " com sucesso!", "Emitente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Emitente " + mensagemCrud + " com sucesso!", "Emitente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 LimpaCampos();
                 PreencherGrid();
                 btnSalvar.Enabled = false;

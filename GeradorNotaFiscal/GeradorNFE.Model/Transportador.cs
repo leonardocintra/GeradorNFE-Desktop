@@ -32,5 +32,7 @@ namespace GeradorNFE.Model
         public string Placa { get; set; }
         public string UFPlaca { get; set; }
         public string RNTC { get; set; }
+        public string CEP { get; set; }
+        public string CEPPlaca { get; set; }
     }
 }

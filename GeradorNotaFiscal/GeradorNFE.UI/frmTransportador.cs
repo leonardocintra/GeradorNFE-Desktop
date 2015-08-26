@@ -117,6 +117,7 @@ namespace GeradorNFE.UI
         private void SetTranportadora(Enuns.TipoCrud tipoCrud)
         {
             string mensagemException = Utilidade.GetMensagemParaException(tipoCrud);
+            string mensagemCrud = Utilidade.GetMensagemParaCrud(tipoCrud);
 
             try
             {
@@ -141,12 +142,15 @@ namespace GeradorNFE.UI
                 transportador.RNTC = txtRNTC.Text;
                 transportador.UF = txtEstado.Text;
                 transportador.UFPlaca = txtUFPlaca.Text;
+                transportador.CEP = txtCEP.Text.Replace("-", string.Empty);
+                transportador.CEPPlaca = txtCEPPlaca.Text.Replace("-", string.Empty);
 
                 // VERIFICAR SE O CALCULO ESTA CORRETO.
                 transportador.Aliquota = string.IsNullOrEmpty(txtAliquota.Text) ? 0 : Convert.ToDecimal(txtAliquota.Text);
                 transportador.ValorBase = string.IsNullOrEmpty(txtValorBase.Text) ? 0 : Convert.ToDecimal(txtValorBase.Text);
                 transportador.ValorServico = string.IsNullOrEmpty(txtValorServico.Text) ? 0 : Convert.ToDecimal(txtValorServico.Text);
                 transportador.Valor = transportador.ValorBase + transportador.ValorServico + transportador.Aliquota;
+                
                 #endregion
 
                 if (tipoCrud.Equals(Enuns.TipoCrud.novo))
@@ -170,7 +174,7 @@ namespace GeradorNFE.UI
                     return;
                 }                
 
-                MessageBox.Show("Transportador " + mensagemException + " com sucesso!", "Transportador", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Transportador " + mensagemCrud + " com sucesso!", "Transportador", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpaCampos();
                 PreencherGrid();
                 btnSalvar.Enabled = false;
@@ -382,6 +386,8 @@ namespace GeradorNFE.UI
                 txtPlaca.Text = dataGridView1[15, dataGridView1.CurrentRow.Index].Value.ToString();
                 txtUFPlaca.Text = dataGridView1[16, dataGridView1.CurrentRow.Index].Value.ToString();
                 txtRNTC.Text = dataGridView1[17, dataGridView1.CurrentRow.Index].Value.ToString();
+                txtCEP.Text = dataGridView1[18, dataGridView1.CurrentRow.Index].Value.ToString();
+                txtCEPPlaca.Text = dataGridView1[19, dataGridView1.CurrentRow.Index].Value.ToString();
 
             }
             catch

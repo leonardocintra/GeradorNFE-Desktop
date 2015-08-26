@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractCrud.cs" />
+    <Compile Include="DestinatarioDAO.cs" />
     <Compile Include="EmitenteDAO.cs" />
     <Compile Include="EnderecoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

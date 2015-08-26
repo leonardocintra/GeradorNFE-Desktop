@@ -10,7 +10,6 @@ namespace GeradorNFE.BLL
 {
     public class EmitenteBLL
     {
-
         public static void ExcluirEmitente(Emitente emitente)
         {
             if (emitente.EmitenteId > 0)

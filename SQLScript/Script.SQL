@@ -51,7 +51,7 @@ ALTER TABLE [dbo].[Transportador]
 
 
 CREATE TABLE [dbo].[Destinatario] (
-    [Id]                INT            IDENTITY (1, 1) NOT NULL,
+    [DestinatarioId]                INT            IDENTITY (1, 1) NOT NULL,
     [CNPJ]              VARCHAR (14)   NOT NULL,
     [IndIEDest]         INT            NULL,
     [InscricaoEstadual] VARCHAR (14)   NULL,
@@ -66,9 +66,11 @@ CREATE TABLE [dbo].[Destinatario] (
     [CidadeCodigo]      INT            NOT NULL,
     [Cidade]            NVARCHAR (200) NOT NULL,
     [UF]                CHAR (2)       NOT NULL,
-    [PaisCodigo]        INT            NOT NULL,
-    [Pais]              NVARCHAR (50)  NOT NULL,
-    PRIMARY KEY CLUSTERED ([Id] ASC)
+    [PaisCodigo]        INT            DEFAULT ((1058)) NOT NULL,
+    [Pais]              NVARCHAR (50)  DEFAULT ('BRASIL') NOT NULL,
+    PRIMARY KEY CLUSTERED ([DestinatarioId] ASC)
+);
+
 );
 
 

@@ -24,5 +24,20 @@ namespace GeradorNFE.UI.ClassForm
 
             return mensagem;
         }
+
+        public static string GetMensagemParaCrud(Enuns.TipoCrud tipoCrud)
+        {
+            string mensagem = string.Empty;
+            if (tipoCrud.Equals(Enuns.TipoCrud.novo))
+                mensagem = "cadastrado";
+            else if (tipoCrud.Equals(Enuns.TipoCrud.update))
+                mensagem = "atualizado";
+            else if (tipoCrud.Equals(Enuns.TipoCrud.delete))
+                mensagem = "excluído";
+            else
+                mensagem = "executar alguma ação não informada";
+
+            return mensagem;
+        }
     }
 }

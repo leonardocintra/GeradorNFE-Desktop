@@ -27,5 +27,6 @@ namespace GeradorNFE.Model
     
         public virtual DbSet<Emitente> Emitente { get; set; }
         public virtual DbSet<Transportador> Transportador { get; set; }
+        public virtual DbSet<Destinatario> Destinatario { get; set; }
     }
 }

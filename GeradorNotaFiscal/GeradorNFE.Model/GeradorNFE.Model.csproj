@@ -66,6 +66,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Destinatario.cs">
+      <DependentUpon>GeradorModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Emitente.cs">
       <DependentUpon>GeradorModel.tt</DependentUpon>
     </Compile>
