@@ -42,5 +42,12 @@ namespace GeradorNFE.UI
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProduto frm = new frmProduto();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

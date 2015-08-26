@@ -38,6 +38,7 @@
             this.transportadoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.destinatarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gerarArquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.produtoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,7 +86,8 @@
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.emitenteToolStripMenuItem,
             this.transportadoraToolStripMenuItem,
-            this.destinatarioToolStripMenuItem});
+            this.destinatarioToolStripMenuItem,
+            this.produtoToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem.Text = "&Menu";
@@ -118,6 +120,13 @@
             this.gerarArquivoToolStripMenuItem.Text = "&Gerar Arquivo!";
             this.gerarArquivoToolStripMenuItem.Click += new System.EventHandler(this.gerarArquivoToolStripMenuItem_Click);
             // 
+            // produtoToolStripMenuItem
+            // 
+            this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
+            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.produtoToolStripMenuItem.Text = "&Produto";
+            this.produtoToolStripMenuItem.Click += new System.EventHandler(this.produtoToolStripMenuItem_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,5 +157,6 @@
         private System.Windows.Forms.ToolStripMenuItem transportadoraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem destinatarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gerarArquivoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem;
     }
 }

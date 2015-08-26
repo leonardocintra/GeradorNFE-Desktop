@@ -89,6 +89,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GeradorModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Produto.cs">
+      <DependentUpon>GeradorModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transportador.cs">
       <DependentUpon>GeradorModel.tt</DependentUpon>

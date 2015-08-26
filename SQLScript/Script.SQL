@@ -71,6 +71,15 @@ CREATE TABLE [dbo].[Destinatario] (
     PRIMARY KEY CLUSTERED ([DestinatarioId] ASC)
 );
 
-);
 
+CREATE TABLE [dbo].[Produto]
+(
+	[ProdutoId] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [CFOP] INT NOT NULL, 
+    [EAN] NVARCHAR(50) NULL, 
+    [NCM] BIGINT NOT NULL, 
+    [Descricao] NVARCHAR(200) NOT NULL, 
+    [Unidade] CHAR(2) NOT NULL, 
+    [ValorUnitario] DECIMAL(18, 2) NOT NULL 
+)
 

@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="GeradorModel.Emitente" Width="1.5" PointX="2.875" PointY="0.75" />
         <EntityTypeShape EntityType="GeradorModel.Transportador" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="GeradorModel.Destinatario" Width="1.5" PointX="0.875" PointY="0.875" />
+        <EntityTypeShape EntityType="GeradorModel.Produto" Width="1.5" PointX="6.625" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

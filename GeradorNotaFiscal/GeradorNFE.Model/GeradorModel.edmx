@@ -50,6 +50,18 @@
           <Property Name="CodigoPais" Type="int" Nullable="false" />
           <Property Name="Pais" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Produto">
+          <Key>
+            <PropertyRef Name="ProdutoId" />
+          </Key>
+          <Property Name="ProdutoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CFOP" Type="int" Nullable="false" />
+          <Property Name="EAN" Type="nvarchar" MaxLength="50" />
+          <Property Name="NCM" Type="bigint" Nullable="false" />
+          <Property Name="Descricao" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Unidade" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="ValorUnitario" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
         <EntityType Name="Transportador">
           <Key>
             <PropertyRef Name="TransportadorId" />
@@ -78,6 +90,7 @@
         <EntityContainer Name="GeradorModelStoreContainer">
           <EntitySet Name="Destinatario" EntityType="Self.Destinatario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Emitente" EntityType="Self.Emitente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Produto" EntityType="Self.Produto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transportador" EntityType="Self.Transportador" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -88,6 +101,7 @@
           <EntitySet Name="Emitente" EntityType="GeradorModel.Emitente" />
           <EntitySet Name="Transportador" EntityType="GeradorModel.Transportador" />
           <EntitySet Name="Destinatario" EntityType="GeradorModel.Destinatario" />
+          <EntitySet Name="Produto" EntityType="GeradorModel.Produto" />
         </EntityContainer>
         <EntityType Name="Emitente">
           <Key>
@@ -158,6 +172,18 @@
           <Property Name="UF" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="PaisCodigo" Type="Int32" Nullable="false" />
           <Property Name="Pais" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Produto">
+          <Key>
+            <PropertyRef Name="ProdutoId" />
+          </Key>
+          <Property Name="ProdutoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CFOP" Type="Int32" Nullable="false" />
+          <Property Name="EAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NCM" Type="Int64" Nullable="false" />
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Unidade" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="ValorUnitario" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -235,6 +261,19 @@
                 <ScalarProperty Name="IndIEDest" ColumnName="IndIEDest" />
                 <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
                 <ScalarProperty Name="DestinatarioId" ColumnName="DestinatarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Produto">
+            <EntityTypeMapping TypeName="GeradorModel.Produto">
+              <MappingFragment StoreEntitySet="Produto">
+                <ScalarProperty Name="ValorUnitario" ColumnName="ValorUnitario" />
+                <ScalarProperty Name="Unidade" ColumnName="Unidade" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="NCM" ColumnName="NCM" />
+                <ScalarProperty Name="EAN" ColumnName="EAN" />
+                <ScalarProperty Name="CFOP" ColumnName="CFOP" />
+                <ScalarProperty Name="ProdutoId" ColumnName="ProdutoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
