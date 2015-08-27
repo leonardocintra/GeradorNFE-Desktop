@@ -71,6 +71,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassForm\Utilidade.cs" />
+    <Compile Include="frmDadosAdicionaisNfe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDadosAdicionaisNfe.Designer.cs">
+      <DependentUpon>frmDadosAdicionaisNfe.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDestinatario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,12 @@
     </Compile>
     <Compile Include="frmEmitente.Designer.cs">
       <DependentUpon>frmEmitente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGeradorArquivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGeradorArquivo.Designer.cs">
+      <DependentUpon>frmGeradorArquivo.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
@@ -103,11 +115,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmDadosAdicionaisNfe.resx">
+      <DependentUpon>frmDadosAdicionaisNfe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDestinatario.resx">
       <DependentUpon>frmDestinatario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmitente.resx">
       <DependentUpon>frmEmitente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGeradorArquivo.resx">
+      <DependentUpon>frmGeradorArquivo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>

@@ -33,7 +33,9 @@ namespace GeradorNFE.UI
 
         private void gerarArquivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmGeradorArquivo frm = new frmGeradorArquivo();
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void destinatarioToolStripMenuItem_Click(object sender, EventArgs e)
