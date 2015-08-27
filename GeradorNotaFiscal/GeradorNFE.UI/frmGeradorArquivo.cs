@@ -33,6 +33,9 @@ namespace GeradorNFE.UI
             Produto produto = new Produto();
             produto = ProdutoBLL.BuscarProdutoById(Convert.ToInt32(txtCodigoProduto.Text));
 
+            if (Convert.ToInt32(txtQuantidade.Text) <= 0)
+                txtQuantidade.Text = "0";
+
             
             MontaProduto montaProduto = new MontaProduto();
             montaProduto.CodigoProduto = produto.ProdutoId;
@@ -44,7 +47,10 @@ namespace GeradorNFE.UI
             decimal valorTotal = Convert.ToDecimal(lblValorTotalNfe.Text.Replace("R$", string.Empty).Trim()) + montaProduto.ValorTotalProduto;
             lblValorTotalNfe.Text = valorTotal.ToString("C");
 
-            PreencherGridProduto(listMontaProduto);
+            var bindingList = new BindingList<MontaProduto>(listMontaProduto);
+            var souce = new BindingSource(bindingList, null);
+
+            gridProduto.DataSource = souce;
         }
 
 
@@ -72,12 +78,6 @@ namespace GeradorNFE.UI
 
         #endregion
 
-        private void PreencherGridProduto(List<MontaProduto> listaProdutos)
-        {
-            gridProduto.DataSource = listaProdutos;
-            gridProduto.Update();
-        }
-
         private void btnGerarArquivo_Click(object sender, EventArgs e)
         {
 
@@ -85,7 +85,13 @@ namespace GeradorNFE.UI
 
         private void cbxProduto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtCodigoProduto.Text = cbxProduto.SelectedIndex + 1.ToString();
+            txtCodigoProduto.Text = cbxProduto.SelectedValue.ToString();
+        }
+
+        private void gridProduto_DoubleClick(object sender, EventArgs e)
+        {
+            // TO DO: remove linha
+            MessageBox.Show("A função de remover o produto com 2 cliques ainda não foi implementada");
         }
     }
 

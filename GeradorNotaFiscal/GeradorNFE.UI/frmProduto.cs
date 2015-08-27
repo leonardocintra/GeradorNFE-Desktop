@@ -40,6 +40,7 @@ namespace GeradorNFE.UI
                 else
                     SetProduto(Enuns.TipoCrud.novo);
             }
+            btnSalvar.Enabled = true;
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -163,7 +164,6 @@ namespace GeradorNFE.UI
             txtDescricao.Enabled = tipoBloqueio;
             txtEAN.Enabled = tipoBloqueio;
             txtFiltro.Enabled = tipoBloqueio;
-            txtIdProduto.Enabled = tipoBloqueio;
             txtNCM.Enabled = tipoBloqueio;
             txtUnidade.Enabled = tipoBloqueio;
             txtValorUnitario.Enabled = tipoBloqueio;
@@ -216,7 +216,12 @@ namespace GeradorNFE.UI
             PreencherGrid();
         }
 
-        private void dataGridProduto_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void txtValorUnitario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidaValorDecinal(sender, e);
+        }
+
+        private void dataGridProduto_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DesbloquearCampos(false);
             btnEditar.Enabled = true;
@@ -233,11 +238,6 @@ namespace GeradorNFE.UI
             catch
             {
             }
-        }
-
-        private void txtValorUnitario_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ValidaValorDecinal(sender, e);
         }
     }
 }

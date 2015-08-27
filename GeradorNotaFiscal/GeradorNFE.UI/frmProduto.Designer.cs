@@ -28,8 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtUnidade = new System.Windows.Forms.MaskedTextBox();
+            this.txtValorUnitario = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblAcao = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtIdProduto = new System.Windows.Forms.TextBox();
             this.lblIdEmitente = new System.Windows.Forms.Label();
             this.txtNCM = new System.Windows.Forms.TextBox();
@@ -40,20 +46,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
-            this.lblAcao = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.dataGridProduto = new System.Windows.Forms.DataGridView();
             this.btnFiltro = new System.Windows.Forms.Button();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtValorUnitario = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtUnidade = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProduto)).BeginInit();
             this.SuspendLayout();
@@ -83,6 +83,61 @@
             this.groupBox1.TabIndex = 43;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados do produto:";
+            // 
+            // txtUnidade
+            // 
+            this.txtUnidade.Location = new System.Drawing.Point(100, 173);
+            this.txtUnidade.Mask = ">LL";
+            this.txtUnidade.Name = "txtUnidade";
+            this.txtUnidade.Size = new System.Drawing.Size(37, 20);
+            this.txtUnidade.TabIndex = 6;
+            // 
+            // txtValorUnitario
+            // 
+            this.txtValorUnitario.Location = new System.Drawing.Point(100, 199);
+            this.txtValorUnitario.Name = "txtValorUnitario";
+            this.txtValorUnitario.Size = new System.Drawing.Size(80, 20);
+            this.txtValorUnitario.TabIndex = 7;
+            this.txtValorUnitario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorUnitario_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(27, 202);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(73, 13);
+            this.label8.TabIndex = 57;
+            this.label8.Text = "Valor Unitário:";
+            // 
+            // lblAcao
+            // 
+            this.lblAcao.AutoSize = true;
+            this.lblAcao.ForeColor = System.Drawing.Color.Green;
+            this.lblAcao.Location = new System.Drawing.Point(365, 176);
+            this.lblAcao.Name = "lblAcao";
+            this.lblAcao.Size = new System.Drawing.Size(54, 13);
+            this.lblAcao.TabIndex = 56;
+            this.lblAcao.Text = "labelAcao";
+            this.lblAcao.Visible = false;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(330, 176);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(35, 13);
+            this.label18.TabIndex = 55;
+            this.label18.Text = "Ação:";
+            this.label18.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(48, 176);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 13);
+            this.label2.TabIndex = 38;
+            this.label2.Text = "Unidade:";
             // 
             // txtIdProduto
             // 
@@ -165,15 +220,6 @@
             this.label1.TabIndex = 24;
             this.label1.Text = "Descrição:";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(48, 176);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 13);
-            this.label2.TabIndex = 38;
-            this.label2.Text = "Unidade:";
-            // 
             // btnExcluir
             // 
             this.btnExcluir.Enabled = false;
@@ -216,35 +262,14 @@
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
-            // lblAcao
-            // 
-            this.lblAcao.AutoSize = true;
-            this.lblAcao.ForeColor = System.Drawing.Color.Green;
-            this.lblAcao.Location = new System.Drawing.Point(365, 176);
-            this.lblAcao.Name = "lblAcao";
-            this.lblAcao.Size = new System.Drawing.Size(54, 13);
-            this.lblAcao.TabIndex = 56;
-            this.lblAcao.Text = "labelAcao";
-            this.lblAcao.Visible = false;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(330, 176);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(35, 13);
-            this.label18.TabIndex = 55;
-            this.label18.Text = "Ação:";
-            this.label18.Visible = false;
-            // 
             // dataGridProduto
             // 
             this.dataGridProduto.AllowUserToAddRows = false;
             this.dataGridProduto.AllowUserToDeleteRows = false;
             this.dataGridProduto.AllowUserToOrderColumns = true;
             this.dataGridProduto.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridProduto.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dataGridProduto.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -253,9 +278,9 @@
             this.dataGridProduto.Location = new System.Drawing.Point(12, 289);
             this.dataGridProduto.Name = "dataGridProduto";
             this.dataGridProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridProduto.Size = new System.Drawing.Size(465, 228);
+            this.dataGridProduto.Size = new System.Drawing.Size(474, 228);
             this.dataGridProduto.TabIndex = 55;
-            this.dataGridProduto.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProduto_CellContentClick);
+            this.dataGridProduto.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProduto_CellClick);
             // 
             // btnFiltro
             // 
@@ -282,31 +307,6 @@
             this.label13.Size = new System.Drawing.Size(83, 13);
             this.label13.TabIndex = 56;
             this.label13.Text = "Buscar Produto:";
-            // 
-            // txtValorUnitario
-            // 
-            this.txtValorUnitario.Location = new System.Drawing.Point(100, 199);
-            this.txtValorUnitario.Name = "txtValorUnitario";
-            this.txtValorUnitario.Size = new System.Drawing.Size(80, 20);
-            this.txtValorUnitario.TabIndex = 7;
-            this.txtValorUnitario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorUnitario_KeyPress);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(27, 202);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(73, 13);
-            this.label8.TabIndex = 57;
-            this.label8.Text = "Valor Unitário:";
-            // 
-            // txtUnidade
-            // 
-            this.txtUnidade.Location = new System.Drawing.Point(100, 173);
-            this.txtUnidade.Mask = ">LL";
-            this.txtUnidade.Name = "txtUnidade";
-            this.txtUnidade.Size = new System.Drawing.Size(37, 20);
-            this.txtUnidade.TabIndex = 6;
             // 
             // frmProduto
             // 

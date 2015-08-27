@@ -35,7 +35,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cbxProduto = new System.Windows.Forms.ComboBox();
             this.txtCodigoProduto = new System.Windows.Forms.TextBox();
-            this.txtQuantidade = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -44,6 +43,7 @@
             this.btnGerarArquivo = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.lblValorTotalNfe = new System.Windows.Forms.Label();
+            this.txtQuantidade = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridProduto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +51,7 @@
             // 
             this.cbxEmitente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEmitente.FormattingEnabled = true;
-            this.cbxEmitente.Location = new System.Drawing.Point(181, 24);
+            this.cbxEmitente.Location = new System.Drawing.Point(162, 24);
             this.cbxEmitente.Name = "cbxEmitente";
             this.cbxEmitente.Size = new System.Drawing.Size(323, 21);
             this.cbxEmitente.TabIndex = 0;
@@ -59,7 +59,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(124, 27);
+            this.label1.Location = new System.Drawing.Point(105, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 1;
@@ -68,7 +68,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(109, 63);
+            this.label2.Location = new System.Drawing.Point(90, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 3;
@@ -78,7 +78,7 @@
             // 
             this.cbxDestinatario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxDestinatario.FormattingEnabled = true;
-            this.cbxDestinatario.Location = new System.Drawing.Point(181, 60);
+            this.cbxDestinatario.Location = new System.Drawing.Point(162, 60);
             this.cbxDestinatario.Name = "cbxDestinatario";
             this.cbxDestinatario.Size = new System.Drawing.Size(323, 21);
             this.cbxDestinatario.TabIndex = 2;
@@ -86,7 +86,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(66, 136);
+            this.label3.Location = new System.Drawing.Point(47, 136);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 5;
@@ -96,7 +96,7 @@
             // 
             this.cbxProduto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxProduto.FormattingEnabled = true;
-            this.cbxProduto.Location = new System.Drawing.Point(181, 132);
+            this.cbxProduto.Location = new System.Drawing.Point(162, 132);
             this.cbxProduto.Name = "cbxProduto";
             this.cbxProduto.Size = new System.Drawing.Size(249, 21);
             this.cbxProduto.TabIndex = 4;
@@ -104,22 +104,15 @@
             // 
             // txtCodigoProduto
             // 
-            this.txtCodigoProduto.Location = new System.Drawing.Point(119, 133);
+            this.txtCodigoProduto.Location = new System.Drawing.Point(100, 133);
             this.txtCodigoProduto.Name = "txtCodigoProduto";
             this.txtCodigoProduto.Size = new System.Drawing.Size(56, 20);
             this.txtCodigoProduto.TabIndex = 6;
             // 
-            // txtQuantidade
-            // 
-            this.txtQuantidade.Location = new System.Drawing.Point(436, 133);
-            this.txtQuantidade.Name = "txtQuantidade";
-            this.txtQuantidade.Size = new System.Drawing.Size(51, 20);
-            this.txtQuantidade.TabIndex = 7;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(127, 117);
+            this.label4.Location = new System.Drawing.Point(108, 117);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 13);
             this.label4.TabIndex = 8;
@@ -128,7 +121,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(283, 116);
+            this.label5.Location = new System.Drawing.Point(264, 116);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 9;
@@ -137,7 +130,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(428, 116);
+            this.label6.Location = new System.Drawing.Point(409, 116);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 13);
             this.label6.TabIndex = 10;
@@ -145,7 +138,7 @@
             // 
             // btnAdicionarProduto
             // 
-            this.btnAdicionarProduto.Location = new System.Drawing.Point(493, 130);
+            this.btnAdicionarProduto.Location = new System.Drawing.Point(463, 130);
             this.btnAdicionarProduto.Name = "btnAdicionarProduto";
             this.btnAdicionarProduto.Size = new System.Drawing.Size(75, 23);
             this.btnAdicionarProduto.TabIndex = 11;
@@ -155,15 +148,23 @@
             // 
             // gridProduto
             // 
+            this.gridProduto.AllowUserToAddRows = false;
+            this.gridProduto.AllowUserToResizeRows = false;
+            this.gridProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridProduto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.gridProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridProduto.Location = new System.Drawing.Point(65, 159);
+            this.gridProduto.Location = new System.Drawing.Point(29, 159);
             this.gridProduto.Name = "gridProduto";
-            this.gridProduto.Size = new System.Drawing.Size(503, 195);
+            this.gridProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridProduto.Size = new System.Drawing.Size(552, 195);
             this.gridProduto.TabIndex = 12;
+            this.gridProduto.DoubleClick += new System.EventHandler(this.gridProduto_DoubleClick);
             // 
             // btnGerarArquivo
             // 
-            this.btnGerarArquivo.Location = new System.Drawing.Point(458, 371);
+            this.btnGerarArquivo.Location = new System.Drawing.Point(439, 371);
             this.btnGerarArquivo.Name = "btnGerarArquivo";
             this.btnGerarArquivo.Size = new System.Drawing.Size(110, 47);
             this.btnGerarArquivo.TabIndex = 13;
@@ -175,7 +176,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(56, 376);
+            this.label7.Location = new System.Drawing.Point(37, 376);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(111, 42);
             this.label7.TabIndex = 14;
@@ -186,17 +187,27 @@
             this.lblValorTotalNfe.AutoSize = true;
             this.lblValorTotalNfe.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValorTotalNfe.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lblValorTotalNfe.Location = new System.Drawing.Point(234, 376);
+            this.lblValorTotalNfe.Location = new System.Drawing.Point(215, 376);
             this.lblValorTotalNfe.Name = "lblValorTotalNfe";
             this.lblValorTotalNfe.Size = new System.Drawing.Size(39, 42);
             this.lblValorTotalNfe.TabIndex = 15;
             this.lblValorTotalNfe.Text = "0";
             // 
+            // txtQuantidade
+            // 
+            this.txtQuantidade.Location = new System.Drawing.Point(418, 132);
+            this.txtQuantidade.Mask = "00000";
+            this.txtQuantidade.Name = "txtQuantidade";
+            this.txtQuantidade.Size = new System.Drawing.Size(39, 20);
+            this.txtQuantidade.TabIndex = 16;
+            this.txtQuantidade.ValidatingType = typeof(int);
+            // 
             // frmGeradorArquivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 442);
+            this.ClientSize = new System.Drawing.Size(613, 436);
+            this.Controls.Add(this.txtQuantidade);
             this.Controls.Add(this.lblValorTotalNfe);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnGerarArquivo);
@@ -205,7 +216,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtQuantidade);
             this.Controls.Add(this.txtCodigoProduto);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbxProduto);
@@ -234,7 +244,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbxProduto;
         private System.Windows.Forms.TextBox txtCodigoProduto;
-        private System.Windows.Forms.TextBox txtQuantidade;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -243,5 +252,6 @@
         private System.Windows.Forms.Button btnGerarArquivo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblValorTotalNfe;
+        private System.Windows.Forms.MaskedTextBox txtQuantidade;
     }
 }
