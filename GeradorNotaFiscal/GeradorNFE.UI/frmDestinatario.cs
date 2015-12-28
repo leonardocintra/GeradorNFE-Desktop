@@ -96,6 +96,7 @@ namespace GeradorNFE.UI
                 destinatario.UF = txtEstado.Text;
                 destinatario.Pais = "BRASIL";
                 destinatario.PaisCodigo = 1058;
+                destinatario.Email = txtEmail.Text;
                 #endregion
 
                 if (tipoCrud.Equals(Enuns.TipoCrud.novo))
@@ -148,6 +149,7 @@ namespace GeradorNFE.UI
             txtNumero.Clear();
             txtPais.Clear();
             txtTelefone.Clear();
+            txtEmail.Clear();
         }
 
         private void DesbloquearCampos(bool tipoBloqueio)
@@ -158,6 +160,7 @@ namespace GeradorNFE.UI
             txtInscricaoEstatudal.Enabled = tipoBloqueio;
             txtNomeRazao.Enabled = tipoBloqueio;
             txtTelefone.Enabled = tipoBloqueio;
+            txtEmail.Enabled = tipoBloqueio;
         }
 
         private void DesbloquearCamposEndereco(bool tipoBloqueio)
@@ -237,6 +240,7 @@ namespace GeradorNFE.UI
                 txtCidade.Text = dataGridDestinatario[13, dataGridDestinatario.CurrentRow.Index].Value.ToString();
                 txtEstado.Text = dataGridDestinatario[14, dataGridDestinatario.CurrentRow.Index].Value.ToString();
                 txtPais.Text = dataGridDestinatario[16, dataGridDestinatario.CurrentRow.Index].Value.ToString();
+                txtEmail.Text = dataGridDestinatario[17, dataGridDestinatario.CurrentRow.Index].Value.ToString();
             }
             catch
             {

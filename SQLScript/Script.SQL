@@ -70,6 +70,8 @@ CREATE TABLE [dbo].[Destinatario] (
     [Pais]              NVARCHAR (50)  DEFAULT ('BRASIL') NOT NULL,
     PRIMARY KEY CLUSTERED ([DestinatarioId] ASC)
 );
+ALTER TABLE [dbo].[Destinatario]
+    ADD [Email] NVARCHAR (200) NULL;
 
 
 CREATE TABLE [dbo].[Produto]

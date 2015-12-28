@@ -26,6 +26,7 @@
           <Property Name="UF" Type="char" MaxLength="2" Nullable="false" />
           <Property Name="PaisCodigo" Type="int" Nullable="false" />
           <Property Name="Pais" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Emitente">
           <Key>
@@ -172,6 +173,7 @@
           <Property Name="UF" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="PaisCodigo" Type="Int32" Nullable="false" />
           <Property Name="Pais" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Produto">
           <Key>
@@ -244,6 +246,7 @@
           <EntitySetMapping Name="Destinatario">
             <EntityTypeMapping TypeName="GeradorModel.Destinatario">
               <MappingFragment StoreEntitySet="Destinatario">
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Pais" ColumnName="Pais" />
                 <ScalarProperty Name="PaisCodigo" ColumnName="PaisCodigo" />
                 <ScalarProperty Name="UF" ColumnName="UF" />

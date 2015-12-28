@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace GeradorNFE.UI
 {
@@ -80,7 +81,13 @@ namespace GeradorNFE.UI
 
         private void btnGerarArquivo_Click(object sender, EventArgs e)
         {
+            StreamWriter writer = new StreamWriter(@"C:\GitHub\GeradorNF-e\ArquivosGerados\arquivo1.txt");
+            writer.WriteLine("Teste");
+            writer.Write("Outro mini teste");
+            writer.WriteLine("www.google.com.br");
+            writer.Close();
 
+            writer.Dispose();
         }
 
         private void cbxProduto_SelectedIndexChanged(object sender, EventArgs e)
