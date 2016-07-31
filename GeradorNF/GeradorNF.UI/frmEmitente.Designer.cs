@@ -351,6 +351,7 @@
             this.btnSalvar.TabIndex = 52;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // txtComplemento
             // 
@@ -396,6 +397,7 @@
             this.btnNovo.TabIndex = 59;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // txtFiltro
             // 
