@@ -32,5 +32,17 @@ namespace GeradorNF.DAO
 
             return _return;
         }
+
+        public static async void AdicionarEmitente(Emitente emitente)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:8000");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage response = await client.PostAsJsonAsync("/emitente", emitente);
+            }
+        }
     }
 }
