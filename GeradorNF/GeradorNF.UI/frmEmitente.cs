@@ -29,7 +29,15 @@ namespace GeradorNF.UI
 
         private async void GetEmitente()
         {
-            dataGridEmitente.DataSource = await EmitenteBLL.GetEmitenteBLL();
+            try
+            {
+                dataGridEmitente.DataSource = await EmitenteBLL.GetEmitenteBLL();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -98,6 +106,43 @@ namespace GeradorNF.UI
         private void btnSalvar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void linkPesquisaCEP_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Endereco endereco = new Endereco();
+            EnderecoBLL enderecoBLL = new EnderecoBLL();
+
+            linkPesquisaCEP.Text = "Aguarde ...";
+            DesbloquearCamposEndereco(false);
+
+            try
+            {
+                endereco = enderecoBLL.BuscarDadosCEP(txtCEP.Text);
+
+                txtEndereco.Text = endereco.Logradouro;
+                txtComplemento.Text = endereco.Complemento;
+                txtBairro.Text = endereco.Bairro;
+                txtCidade.Text = endereco.Localidade;
+                txtEstado.Text = endereco.UF;
+                txtCodigoCidade.Text = endereco.IBGE;
+
+                if (endereco.CEP == null)
+                {
+                    MessageBox.Show("CEP não encontrado ou inválido! Tente novamente", "CEP não encontrado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    txtCEP.Clear();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao buscar CEP! \nErro: " + ex.Message, "Erro CEP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                DesbloquearCamposEndereco(true);
+                linkPesquisaCEP.Text = "Pesquisar";
+                txtCEP.Focus();
+            }
         }
     }
 }

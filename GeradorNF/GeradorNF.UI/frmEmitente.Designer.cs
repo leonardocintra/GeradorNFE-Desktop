@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtIdEmitente = new System.Windows.Forms.TextBox();
             this.lblIdEmitente = new System.Windows.Forms.Label();
@@ -335,6 +335,7 @@
             this.linkPesquisaCEP.TabIndex = 45;
             this.linkPesquisaCEP.TabStop = true;
             this.linkPesquisaCEP.Text = "Pesquisar";
+            this.linkPesquisaCEP.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkPesquisaCEP_LinkClicked);
             // 
             // txtNumero
             // 
@@ -421,8 +422,8 @@
             this.dataGridEmitente.AllowUserToDeleteRows = false;
             this.dataGridEmitente.AllowUserToOrderColumns = true;
             this.dataGridEmitente.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridEmitente.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dataGridEmitente.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridEmitente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
