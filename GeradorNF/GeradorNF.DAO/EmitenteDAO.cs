@@ -20,7 +20,7 @@ namespace GeradorNF.DAO
                 using (var client = new HttpClient())
                 {
 
-                    client.BaseAddress = new Uri("http://localhost:8000");
+                    client.BaseAddress = new Uri("https://geradornf-prod.herokuapp.com/emitente/");
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -51,13 +51,28 @@ namespace GeradorNF.DAO
 
         public static async void AdicionarEmitente(Emitente emitente)
         {
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("http://localhost:8000");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://geradornf-prod.herokuapp.com/emitente/");
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage response = await client.PostAsJsonAsync("/emitente", emitente);
+                    HttpResponseMessage response = await client.PostAsJsonAsync("/emitente", emitente);
+                }
+            }
+            catch (JsonException ex)
+            {
+                throw new Exception("JsonException - Não foi possivel salvar esse emitente. Erro: " + ex.Message);
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("HttpRequestException - Não foi possivel salvar esse emitente.. Erro: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception - Não foi possivel salvar esse emitente. Erro: " + ex.Message);
             }
         }
     }
