@@ -14,23 +14,39 @@ namespace GeradorNF.DAO
     {
         public static async Task<List<Emitente>> GetEmitenteDAO()
         {
-            List<Emitente> _return = new List<Emitente>();
-            using (var client = new HttpClient())
+            try
             {
-                
-                client.BaseAddress = new Uri("http://localhost:8000");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                HttpResponseMessage response = await client.GetAsync("/emitente");
-                if (response.IsSuccessStatusCode)
+                List<Emitente> _return = new List<Emitente>();
+                using (var client = new HttpClient())
                 {
-                    string json = await response.Content.ReadAsStringAsync();
-                    _return = JsonConvert.DeserializeObject<List<Emitente>>(json).ToList();
+
+                    client.BaseAddress = new Uri("http://localhost:8000");
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    HttpResponseMessage response = await client.GetAsync("/emitente");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string json = await response.Content.ReadAsStringAsync();
+                        _return = JsonConvert.DeserializeObject<List<Emitente>>(json).ToList();
+                    }
                 }
+
+                return _return;
+            }
+            catch (JsonException ex)
+            {
+                throw new Exception("JsonException - Não foi possivel buscar os Emitentes. Erro: " + ex.Message);
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("HttpRequestException - Não foi possivel buscar os Emitentes. Erro: " + ex.Message);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Exception - Não foi possivel buscar os Emitentes. Erro: " + ex.Message);
             }
 
-            return _return;
         }
 
         public static async void AdicionarEmitente(Emitente emitente)

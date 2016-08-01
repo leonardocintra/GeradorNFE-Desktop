@@ -29,7 +29,15 @@ namespace GeradorNF.UI
 
         private async void GetEmitente()
         {
-            dataGridEmitente.DataSource = await EmitenteBLL.GetEmitenteBLL();
+            try
+            {
+                dataGridEmitente.DataSource = await EmitenteBLL.GetEmitenteBLL();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
