@@ -18,7 +18,7 @@ namespace GeradorNF.Model
         public string Localidade { get; set; }
         public string UF { get; set; }
         public string IBGE { get; set; }
-        public int GIA { get; set; }
+        public int? GIA { get; set; }
 
     }
 }
