@@ -47,6 +47,7 @@
     <Compile Include="Destinatario.cs" />
     <Compile Include="Emitente.cs" />
     <Compile Include="Endereco.cs" />
+    <Compile Include="Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
