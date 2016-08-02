@@ -49,6 +49,7 @@
     <Compile Include="Endereco.cs" />
     <Compile Include="Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transportador.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
