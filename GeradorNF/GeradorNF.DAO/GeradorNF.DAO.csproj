@@ -51,6 +51,7 @@
     <Compile Include="EmitenteDAO.cs" />
     <Compile Include="EnderecoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UtilDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

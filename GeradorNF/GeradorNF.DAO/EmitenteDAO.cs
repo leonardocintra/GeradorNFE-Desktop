@@ -20,7 +20,7 @@ namespace GeradorNF.DAO
                 using (var client = new HttpClient())
                 {
 
-                    client.BaseAddress = new Uri("https://geradornf-prod.herokuapp.com/emitente/");
+                    client.BaseAddress = new Uri(UtilDAO.UrlApi());
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -55,11 +55,9 @@ namespace GeradorNF.DAO
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://geradornf-prod.herokuapp.com/emitente/");
-                    client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                    HttpResponseMessage response = await client.PostAsJsonAsync("/emitente", emitente);
+                    var serializeEmitente = JsonConvert.SerializeObject(emitente);
+                    var content = new StringContent(serializeEmitente, Encoding.UTF8, "application/json");
+                    var result = await client.PostAsync(UtilDAO.UrlApi() + "/emitente", content);
                 }
             }
             catch (JsonException ex)

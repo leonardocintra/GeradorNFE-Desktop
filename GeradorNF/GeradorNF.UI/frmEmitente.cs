@@ -101,11 +101,71 @@ namespace GeradorNF.UI
             txtNumero.Enabled = tipoBloqueio;
             btnSalvar.Enabled = tipoBloqueio;
         }
+
+        private void SetEmitente(Enuns.TipoCrud tipoCrud)
+        {
+            Emitente emitente = new Emitente();
+
+            string mensagemException = Utilidade.GetMensagemParaException(tipoCrud);
+            string mensagemCrud = Utilidade.GetMensagemParaCrud(tipoCrud);
+
+            try
+            {
+                #region set parameters
+                emitente.RazaoSocial = txtNomeRazao.Text;
+                emitente.CNPJ = txtCNPJ.Text.Replace(".", "").Replace("/", "").Replace("-", "");
+                emitente.NomeFantasia = txtNomeFantasia.Text;
+                emitente.Bairro = txtBairro.Text;
+                emitente.CEP = txtCEP.Text.Replace("-", string.Empty);
+                emitente.Cidade = txtCidade.Text;
+                emitente.CNAE = txtCNAE.Text;
+                emitente.CidadeCodigo = int.Parse(txtCodigoCidade.Text);
+                emitente.Complemento = txtComplemento.Text;
+                emitente.Fone = txtTelefone.Text;
+                emitente.InscricaoEstadual = txtInscricaoEstatudal.Text;
+                emitente.IM = txtIM.Text;
+                emitente.Logradouro = txtEndereco.Text;
+                emitente.NumeroCasa = txtNumero.Text;
+                emitente.UF = txtEstado.Text;
+                #endregion
+
+                if (tipoCrud.Equals(Enuns.TipoCrud.novo))
+                {
+                    EmitenteBLL.SalvarEmitenteBLL(emitente);
+
+                }
+                //else if (tipoCrud.Equals(Enuns.TipoCrud.update))
+                //{
+                //    emitente.EmitenteId = int.Parse(txtIdEmitente.Text);
+                //    EmitenteBLL.AtualizarEmitente(emitente);
+
+                //}
+                //else if (tipoCrud.Equals(Enuns.TipoCrud.delete))
+                //{
+                //    emitente.EmitenteId = int.Parse(txtIdEmitente.Text);
+                //    EmitenteBLL.ExcluirEmitente(emitente);
+                //}
+                else
+                {
+                    MessageBox.Show("Erro ao fazer operação no Emitente");
+                }
+
+                MessageBox.Show("Emitente " + mensagemCrud + " com sucesso!", "Emitente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                LimpaCampos();
+                GetEmitente();
+                btnSalvar.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro ao " + mensagemException + " o emitente! \nErro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         #endregion
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-
+            SetEmitente(Enuns.TipoCrud.novo);
         }
 
         private void linkPesquisaCEP_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

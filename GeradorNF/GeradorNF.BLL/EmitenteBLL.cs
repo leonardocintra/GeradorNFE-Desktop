@@ -22,6 +22,10 @@ namespace GeradorNF.BLL
 
             if (emitente.CNPJ == string.Empty)
                 throw new Exception("CNPJ do emitente é obrigatório!");
+
+            emitente.Pais = "BRASIL";
+            emitente.PaisCodigo = 1058;
+
             EmitenteDAO.AdicionarEmitente(emitente);
         }
     }
