@@ -50,6 +50,7 @@
     <Compile Include="Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transportador.cs" />
+    <Compile Include="TransportadorContrato.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
