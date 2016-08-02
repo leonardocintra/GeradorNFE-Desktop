@@ -10,7 +10,8 @@ namespace GeradorNF.DAO
     {
         public static string UrlApi()
         {
-            return "https://geradornf-prod.herokuapp.com";
+            //return "https://geradornf-prod.herokuapp.com";
+            return "http://localhost:8000/";
         }
     }
 }
