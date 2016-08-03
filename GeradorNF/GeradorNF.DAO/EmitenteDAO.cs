@@ -23,7 +23,6 @@ namespace GeradorNF.DAO
                 List<Emitente> _return = new List<Emitente>();
                 using (var client = new HttpClient())
                 {
-
                     client.BaseAddress = new Uri(UtilDAO.UrlApi());
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -66,15 +65,7 @@ namespace GeradorNF.DAO
         {
             try
             {
-                using (var client = new HttpClient())
-                {
-                    client.BaseAddress = new Uri(UtilDAO.UrlApi());
-                    client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                    HttpResponseMessage response = await client.PostAsJsonAsync(client.BaseAddress.AbsolutePath + "emitente/" , emitente);
-                    return response;
-                }
+                return await AbstractCrud.Add(emitente, "emitente");
             }
             catch (JsonException ex)
             {
@@ -99,15 +90,7 @@ namespace GeradorNF.DAO
         {
             try
             {
-                using (var client = new HttpClient())
-                {
-                    client.BaseAddress = new Uri(UtilDAO.UrlApi());
-                    client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                    HttpResponseMessage response = await client.DeleteAsync(client.BaseAddress.AbsolutePath + String.Format("emitente/{0}", id));
-                    return response;
-                }
+                return await AbstractCrud.Delete(id, "emitente");
             }
             catch (JsonException ex)
             {
@@ -127,15 +110,7 @@ namespace GeradorNF.DAO
         {
             try
             {
-                using (var client = new HttpClient())
-                {
-                    client.BaseAddress = new Uri(UtilDAO.UrlApi());
-                    client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                    HttpResponseMessage response = await client.PutAsJsonAsync(client.BaseAddress.AbsolutePath + String.Format("emitente/{0}/", emitente.Id), emitente);
-                    return response;
-                }
+                return await AbstractCrud.Update(emitente, "emitente", emitente.Id);
             }
             catch (JsonException ex)
             {
