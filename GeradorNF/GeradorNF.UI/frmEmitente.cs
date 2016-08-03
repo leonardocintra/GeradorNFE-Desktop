@@ -54,6 +54,36 @@ namespace GeradorNF.UI
         }
 
         #region privates methods
+        private bool VerificarCamposObrigatorios()
+        {
+            bool _return;
+
+            string cep = txtCEP.Text.Replace("-", string.Empty).Trim();
+            string cnpj = txtCNPJ.Text.Replace(".", string.Empty).Replace("/", string.Empty).Replace("-", string.Empty).Trim();
+
+            if (cep.Length == 0 || cep == string.Empty)
+            {
+                _return = false;
+                MessageBox.Show("Informe corretamente o CEP");
+            }
+            else if (cnpj.Length == 0 || cnpj == string.Empty)
+            {
+                _return = false;
+                MessageBox.Show("CNPJ é Obrigatório!");
+            }
+            else if (txtNomeRazao.TextLength < 3)
+            {
+                _return = false;
+                MessageBox.Show("Nome razão é obrigatório ou é menor que 3 caracteres!");
+            }
+            else
+            {
+                _return = true;
+            }
+
+            return _return;
+        }
+
         private void LimpaCampos()
         {
             txtIdEmitente.Clear();
@@ -146,12 +176,20 @@ namespace GeradorNF.UI
                     }
 
                 }
-                //else if (tipoCrud.Equals(Enuns.TipoCrud.update))
-                //{
-                //    emitente.EmitenteId = int.Parse(txtIdEmitente.Text);
-                //    EmitenteBLL.AtualizarEmitente(emitente);
+                else if (tipoCrud.Equals(Enuns.TipoCrud.update))
+                {
+                    emitente.Id = int.Parse(txtIdEmitente.Text);
+                    response = await EmitenteBLL.AtualizarEmitenteBLL(emitente);
 
-                //}
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Emitente " + mensagemCrud + " com sucesso!", "Emitente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocorreu um erro ao " + mensagemException + " o emitente! \nErro: " + response.RequestMessage, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
                 else if (tipoCrud.Equals(Enuns.TipoCrud.delete))
                 {
                     emitente.Id = int.Parse(txtIdEmitente.Text);
@@ -186,7 +224,13 @@ namespace GeradorNF.UI
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            SetEmitente(Enuns.TipoCrud.novo);
+            if (VerificarCamposObrigatorios())
+            {
+                if (lblAcao.Text.Equals("editar"))
+                    SetEmitente(Enuns.TipoCrud.update);
+                else
+                    SetEmitente(Enuns.TipoCrud.novo);
+            }
         }
 
         private void linkPesquisaCEP_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -276,6 +320,14 @@ namespace GeradorNF.UI
             {
                 MessageBox.Show("Erro ao excluir: Erro " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            btnSalvar.Enabled = true;
+            DesbloquearCampos(true);
+            lblAcao.Text = "editar";
+            txtNomeRazao.Focus();
         }
     }
 }

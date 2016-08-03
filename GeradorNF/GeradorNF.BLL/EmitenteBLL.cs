@@ -36,6 +36,21 @@ namespace GeradorNF.BLL
                 throw new Exception("O Emitente não pode ser zero ou negativo. Verifique");
 
             return await EmitenteDAO.DeletarEmitenteDAO(id);
+
+        }
+
+        public static async Task<HttpResponseMessage> AtualizarEmitenteBLL(Emitente emitente)
+        {
+            if (emitente.NomeFantasia == string.Empty)
+                throw new Exception("Nome do emitente é obrigatório!");
+
+            if (emitente.CNPJ == string.Empty)
+                throw new Exception("CNPJ do emitente é obrigatório!");
+
+            emitente.Pais = "BRASIL";
+            emitente.PaisCodigo = 1058;
+
+            return await EmitenteDAO.AtualizarEmitenteDAO(emitente);
         }
     }
 }

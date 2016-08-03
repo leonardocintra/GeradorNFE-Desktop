@@ -122,5 +122,33 @@ namespace GeradorNF.DAO
                 throw new Exception("Exception - Não foi possivel deletar esse emitente. Erro: " + ex.Message);
             }
         }
+
+        public static async Task<HttpResponseMessage> AtualizarEmitenteDAO(Emitente emitente)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(UtilDAO.UrlApi());
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    HttpResponseMessage response = await client.PutAsJsonAsync(client.BaseAddress.AbsolutePath + String.Format("emitente/{0}/", emitente.Id), emitente);
+                    return response;
+                }
+            }
+            catch (JsonException ex)
+            {
+                throw new Exception("JsonException - Não foi possivel atualizar esse emitente. Erro: " + ex.Message);
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("HttpRequestException - Não foi atualizar deletar esse emitente.. Erro: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception - Não foi possivel atualizar esse emitente. Erro: " + ex.Message);
+            }
+        }
     }
 }
