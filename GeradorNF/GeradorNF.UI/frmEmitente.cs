@@ -256,6 +256,7 @@ namespace GeradorNF.UI
                 {
                     MessageBox.Show("CEP não encontrado ou inválido! Tente novamente", "CEP não encontrado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     txtCEP.Clear();
+                    txtCEP.Focus();
                 }
                 else
                 {
@@ -273,7 +274,6 @@ namespace GeradorNF.UI
             {
                 DesbloquearCamposEndereco(true);
                 linkPesquisaCEP.Text = "Pesquisar";
-                txtCEP.Focus();
             }
         }
 
