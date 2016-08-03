@@ -53,7 +53,7 @@ namespace GeradorNF.DAO
 
         }
 
-        public static async Task<HttpResponseMessage> AdicionarEmitente(Emitente emitente)
+        public static async Task<HttpResponseMessage> AdicionarEmitenteDAO(Emitente emitente)
         {
             try
             {

@@ -132,7 +132,7 @@ namespace GeradorNF.UI
                 if (tipoCrud.Equals(Enuns.TipoCrud.novo))
                 {
                     HttpResponseMessage response = new HttpResponseMessage();
-                    response = await EmitenteBLL.SalvarEmitenteBLL(emitente);
+                    response = await EmitenteBLL.AdicionarEmitenteBLL(emitente);
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -200,6 +200,13 @@ namespace GeradorNF.UI
                 {
                     MessageBox.Show("CEP não encontrado ou inválido! Tente novamente", "CEP não encontrado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     txtCEP.Clear();
+                }
+                else
+                {
+                    if (txtEndereco.Text != string.Empty)
+                        txtNumero.Focus();
+                    else
+                        txtEndereco.Focus();
                 }
             }
             catch (Exception ex)

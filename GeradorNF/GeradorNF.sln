@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeradorNF.BLL", "GeradorNF.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeradorNF.DAO", "GeradorNF.DAO\GeradorNF.DAO.csproj", "{138DA074-E7F5-472A-A213-A0C4E90C6CC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeradorNF.Tests", "GeradorNF.Tests\GeradorNF.Tests.csproj", "{0C1BDCF0-7AF6-4763-8ECD-A6E7C323904F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{138DA074-E7F5-472A-A213-A0C4E90C6CC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{138DA074-E7F5-472A-A213-A0C4E90C6CC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{138DA074-E7F5-472A-A213-A0C4E90C6CC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C1BDCF0-7AF6-4763-8ECD-A6E7C323904F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C1BDCF0-7AF6-4763-8ECD-A6E7C323904F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C1BDCF0-7AF6-4763-8ECD-A6E7C323904F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C1BDCF0-7AF6-4763-8ECD-A6E7C323904F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
