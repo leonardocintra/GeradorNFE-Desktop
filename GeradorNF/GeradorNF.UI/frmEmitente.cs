@@ -253,18 +253,8 @@ namespace GeradorNF.UI
                 txtCodigoCidade.Text = endereco.IBGE;
 
                 if (endereco.CEP == null)
-                {
                     MessageBox.Show("CEP não encontrado ou inválido! Tente novamente", "CEP não encontrado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    txtCEP.Clear();
-                    txtCEP.Focus();
-                }
-                else
-                {
-                    if (txtEndereco.Text != string.Empty)
-                        txtNumero.Focus();
-                    else
-                        txtEndereco.Focus();
-                }
+
             }
             catch (Exception ex)
             {
@@ -274,6 +264,16 @@ namespace GeradorNF.UI
             {
                 DesbloquearCamposEndereco(true);
                 linkPesquisaCEP.Text = "Pesquisar";
+
+                if (endereco.CEP != null)
+                {
+                    if (txtEndereco.Text != string.Empty)
+                        txtNumero.Focus();
+                    else
+                        txtEndereco.Focus();
+                }
+                else
+                    txtCEP.Focus();
             }
         }
 
