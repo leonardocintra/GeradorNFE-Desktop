@@ -102,7 +102,7 @@ namespace GeradorNF.UI
             btnSalvar.Enabled = tipoBloqueio;
         }
 
-        private void SetEmitente(Enuns.TipoCrud tipoCrud)
+        private async void SetEmitente(Enuns.TipoCrud tipoCrud)
         {
             Emitente emitente = new Emitente();
 
@@ -131,7 +131,17 @@ namespace GeradorNF.UI
 
                 if (tipoCrud.Equals(Enuns.TipoCrud.novo))
                 {
-                    EmitenteBLL.SalvarEmitenteBLL(emitente);
+                    HttpResponseMessage response = new HttpResponseMessage();
+                    response = await EmitenteBLL.SalvarEmitenteBLL(emitente);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Emitente " + mensagemCrud + " com sucesso!", "Emitente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocorreu um erro ao " + mensagemException + " o emitente! \nErro: " + response.RequestMessage, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
                 }
                 //else if (tipoCrud.Equals(Enuns.TipoCrud.update))
@@ -150,7 +160,6 @@ namespace GeradorNF.UI
                     MessageBox.Show("Erro ao fazer operação no Emitente");
                 }
 
-                MessageBox.Show("Emitente " + mensagemCrud + " com sucesso!", "Emitente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 LimpaCampos();
                 GetEmitente();
                 btnSalvar.Enabled = false;
