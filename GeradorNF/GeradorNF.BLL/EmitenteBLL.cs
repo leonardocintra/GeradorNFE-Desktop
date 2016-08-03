@@ -16,7 +16,7 @@ namespace GeradorNF.BLL
             return await EmitenteDAO.GetEmitenteDAO();
         }
 
-        public static async Task<HttpResponseMessage> SalvarEmitenteBLL(Emitente emitente)
+        public static async Task<HttpResponseMessage> AdicionarEmitenteBLL(Emitente emitente)
         {
             if (emitente.NomeFantasia == string.Empty)
                 throw new Exception("Nome do emitente é obrigatório!");
@@ -27,7 +27,7 @@ namespace GeradorNF.BLL
             emitente.Pais = "BRASIL";
             emitente.PaisCodigo = 1058;
 
-            return await EmitenteDAO.AdicionarEmitente(emitente);
+            return await EmitenteDAO.AdicionarEmitenteDAO(emitente);
         }
     }
 }
