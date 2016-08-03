@@ -30,6 +30,10 @@ namespace GeradorNF.DAO
                         string json = await response.Content.ReadAsStringAsync();
                         _return = JsonConvert.DeserializeObject<List<Emitente>>(json).ToList();
                     }
+                    else
+                    {
+                        throw new Exception("Erro ao buscar os Emitentes. Erro:" + response.RequestMessage);
+                    }
                 }
 
                 return _return;
@@ -49,15 +53,18 @@ namespace GeradorNF.DAO
 
         }
 
-        public static async void AdicionarEmitente(Emitente emitente)
+        public static async Task<HttpResponseMessage> AdicionarEmitente(Emitente emitente)
         {
             try
             {
                 using (var client = new HttpClient())
                 {
-                    var serializeEmitente = JsonConvert.SerializeObject(emitente);
-                    var content = new StringContent(serializeEmitente, Encoding.UTF8, "application/json");
-                    var result = await client.PostAsync(UtilDAO.UrlApi() + "/emitente", content);
+                    client.BaseAddress = new Uri(UtilDAO.UrlApi());
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    HttpResponseMessage response = await client.PostAsJsonAsync(client.BaseAddress.AbsolutePath + "emitente/" , emitente);
+                    return response;
                 }
             }
             catch (JsonException ex)

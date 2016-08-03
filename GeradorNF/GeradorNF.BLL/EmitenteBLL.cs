@@ -3,6 +3,7 @@ using GeradorNF.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,7 +16,7 @@ namespace GeradorNF.BLL
             return await EmitenteDAO.GetEmitenteDAO();
         }
 
-        public static void SalvarEmitenteBLL(Emitente emitente)
+        public static async Task<HttpResponseMessage> SalvarEmitenteBLL(Emitente emitente)
         {
             if (emitente.NomeFantasia == string.Empty)
                 throw new Exception("Nome do emitente é obrigatório!");
@@ -26,7 +27,7 @@ namespace GeradorNF.BLL
             emitente.Pais = "BRASIL";
             emitente.PaisCodigo = 1058;
 
-            EmitenteDAO.AdicionarEmitente(emitente);
+            return await EmitenteDAO.AdicionarEmitente(emitente);
         }
     }
 }
