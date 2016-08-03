@@ -129,9 +129,11 @@ namespace GeradorNF.UI
                 emitente.UF = txtEstado.Text;
                 #endregion
 
+                HttpResponseMessage response = new HttpResponseMessage();
+
                 if (tipoCrud.Equals(Enuns.TipoCrud.novo))
                 {
-                    HttpResponseMessage response = new HttpResponseMessage();
+                    
                     response = await EmitenteBLL.AdicionarEmitenteBLL(emitente);
 
                     if (response.IsSuccessStatusCode)
@@ -150,11 +152,21 @@ namespace GeradorNF.UI
                 //    EmitenteBLL.AtualizarEmitente(emitente);
 
                 //}
-                //else if (tipoCrud.Equals(Enuns.TipoCrud.delete))
-                //{
-                //    emitente.EmitenteId = int.Parse(txtIdEmitente.Text);
-                //    EmitenteBLL.ExcluirEmitente(emitente);
-                //}
+                else if (tipoCrud.Equals(Enuns.TipoCrud.delete))
+                {
+                    emitente.Id = int.Parse(txtIdEmitente.Text);
+                    response = await EmitenteBLL.DeletarEmitenteBLL(emitente.Id);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Emitente " + mensagemCrud + " com sucesso!", "Emitente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocorreu um erro ao " + mensagemException + " o emitente! \nErro: " + response.RequestMessage, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
                 else
                 {
                     MessageBox.Show("Erro ao fazer operação no Emitente");
@@ -218,6 +230,51 @@ namespace GeradorNF.UI
                 DesbloquearCamposEndereco(true);
                 linkPesquisaCEP.Text = "Pesquisar";
                 txtCEP.Focus();
+            }
+        }
+
+        private void dataGridEmitente_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DesbloquearCampos(false);
+            btnEditar.Enabled = true;
+
+            txtIdEmitente.Text = dataGridEmitente[0, dataGridEmitente.CurrentRow.Index].Value.ToString();
+            txtCNPJ.Text = dataGridEmitente[1, dataGridEmitente.CurrentRow.Index].Value.ToString();
+            txtInscricaoEstatudal.Text = dataGridEmitente[2, dataGridEmitente.CurrentRow.Index].Value.ToString();
+            txtNomeRazao.Text = dataGridEmitente[3, dataGridEmitente.CurrentRow.Index].Value.ToString();
+            txtNomeFantasia.Text = dataGridEmitente[4, dataGridEmitente.CurrentRow.Index].Value.ToString();
+            txtTelefone.Text = dataGridEmitente[5, dataGridEmitente.CurrentRow.Index].Value.ToString();
+            txtCEP.Text = dataGridEmitente[6, dataGridEmitente.CurrentRow.Index].Value.ToString();
+            txtEndereco.Text = dataGridEmitente[7, dataGridEmitente.CurrentRow.Index].Value.ToString();
+            txtNumero.Text = dataGridEmitente[8, dataGridEmitente.CurrentRow.Index].Value.ToString();
+            txtComplemento.Text = dataGridEmitente[9, dataGridEmitente.CurrentRow.Index].Value.ToString();
+            txtBairro.Text = dataGridEmitente[10, dataGridEmitente.CurrentRow.Index].Value.ToString();
+            if (dataGridEmitente[11, dataGridEmitente.CurrentRow.Index].Value != null)
+                txtCodigoCidade.Text = dataGridEmitente[11, dataGridEmitente.CurrentRow.Index].Value.ToString();
+            else
+                txtCodigoCidade.Text = "0";
+            txtCidade.Text = dataGridEmitente[12, dataGridEmitente.CurrentRow.Index].Value.ToString();
+            txtEstado.Text = dataGridEmitente[13, dataGridEmitente.CurrentRow.Index].Value.ToString();
+            txtIM.Text = dataGridEmitente[14, dataGridEmitente.CurrentRow.Index].Value.ToString();
+            txtCNAE.Text = dataGridEmitente[15, dataGridEmitente.CurrentRow.Index].Value.ToString();
+            txtPais.Text = dataGridEmitente[17, dataGridEmitente.CurrentRow.Index].Value.ToString();
+
+            btnExcluir.Enabled = true;
+  
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Deseja excluir esse Emitente?", "Exluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    SetEmitente(Enuns.TipoCrud.delete);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao excluir: Erro " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

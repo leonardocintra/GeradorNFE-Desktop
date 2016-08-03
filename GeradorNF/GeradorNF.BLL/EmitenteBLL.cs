@@ -29,5 +29,13 @@ namespace GeradorNF.BLL
 
             return await EmitenteDAO.AdicionarEmitenteDAO(emitente);
         }
+
+        public static async Task<HttpResponseMessage> DeletarEmitenteBLL(int id)
+        {
+            if (id < 1)
+                throw new Exception("O Emitente não pode ser zero ou negativo. Verifique");
+
+            return await EmitenteDAO.DeletarEmitenteDAO(id);
+        }
     }
 }

@@ -12,6 +12,10 @@ namespace GeradorNF.DAO
 {
     public class EmitenteDAO
     {
+        /// <summary>
+        /// GetEmitente - Buscar/Listar TODOS os Emitentes
+        /// </summary>
+        /// <returns></returns>
         public static async Task<List<Emitente>> GetEmitenteDAO()
         {
             try
@@ -53,6 +57,11 @@ namespace GeradorNF.DAO
 
         }
 
+        /// <summary>
+        /// AdicionarEmiente - Adicionar/Cadastra um novo Emitente
+        /// </summary>
+        /// <param name="emitente"></param>
+        /// <returns></returns>
         public static async Task<HttpResponseMessage> AdicionarEmitenteDAO(Emitente emitente)
         {
             try
@@ -78,6 +87,39 @@ namespace GeradorNF.DAO
             catch (Exception ex)
             {
                 throw new Exception("Exception - Não foi possivel salvar esse emitente. Erro: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// DeltarEmitente - Excluir um emitente
+        /// </summary>
+        /// <param name="id">id do Emitente</param>
+        /// <returns></returns>
+        public static async Task<HttpResponseMessage> DeletarEmitenteDAO(int id)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(UtilDAO.UrlApi());
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    HttpResponseMessage response = await client.DeleteAsync(client.BaseAddress.AbsolutePath + String.Format("emitente/{0}", id));
+                    return response;
+                }
+            }
+            catch (JsonException ex)
+            {
+                throw new Exception("JsonException - Não foi possivel deletar esse emitente. Erro: " + ex.Message);
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("HttpRequestException - Não foi possivel deletar esse emitente.. Erro: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception - Não foi possivel deletar esse emitente. Erro: " + ex.Message);
             }
         }
     }
