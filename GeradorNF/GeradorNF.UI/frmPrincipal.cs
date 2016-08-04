@@ -44,5 +44,12 @@ namespace GeradorNF.UI
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void gerarArquivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGeradorArquivo frm = new frmGeradorArquivo();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

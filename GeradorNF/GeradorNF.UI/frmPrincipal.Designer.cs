@@ -125,6 +125,7 @@
             this.gerarArquivoToolStripMenuItem.Name = "gerarArquivoToolStripMenuItem";
             this.gerarArquivoToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.gerarArquivoToolStripMenuItem.Text = "&Gerar Arquivo!";
+            this.gerarArquivoToolStripMenuItem.Click += new System.EventHandler(this.gerarArquivoToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
