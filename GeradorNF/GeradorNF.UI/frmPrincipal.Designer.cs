@@ -110,6 +110,7 @@
             this.destinatarioToolStripMenuItem.Name = "destinatarioToolStripMenuItem";
             this.destinatarioToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.destinatarioToolStripMenuItem.Text = "&Destinatario";
+            this.destinatarioToolStripMenuItem.Click += new System.EventHandler(this.destinatarioToolStripMenuItem_Click);
             // 
             // produtoToolStripMenuItem
             // 

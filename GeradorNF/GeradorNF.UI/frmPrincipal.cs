@@ -23,5 +23,12 @@ namespace GeradorNF.UI
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void destinatarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDestinatario frm = new frmDestinatario();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }
