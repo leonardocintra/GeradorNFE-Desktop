@@ -310,6 +310,7 @@
             // 
             // btnPesquisarCodigoPlaca
             // 
+            this.btnPesquisarCodigoPlaca.Image = global::GeradorNF.UI.Properties.Resources.searchIco;
             this.btnPesquisarCodigoPlaca.Location = new System.Drawing.Point(208, 138);
             this.btnPesquisarCodigoPlaca.Name = "btnPesquisarCodigoPlaca";
             this.btnPesquisarCodigoPlaca.Size = new System.Drawing.Size(29, 23);
