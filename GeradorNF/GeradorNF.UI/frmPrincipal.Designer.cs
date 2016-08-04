@@ -104,24 +104,28 @@
             this.transportadoraToolStripMenuItem.Name = "transportadoraToolStripMenuItem";
             this.transportadoraToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.transportadoraToolStripMenuItem.Text = "&Transportadora";
+            this.transportadoraToolStripMenuItem.Click += new System.EventHandler(this.transportadoraToolStripMenuItem_Click);
             // 
             // destinatarioToolStripMenuItem
             // 
             this.destinatarioToolStripMenuItem.Name = "destinatarioToolStripMenuItem";
             this.destinatarioToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.destinatarioToolStripMenuItem.Text = "&Destinatario";
+            this.destinatarioToolStripMenuItem.Click += new System.EventHandler(this.destinatarioToolStripMenuItem_Click);
             // 
             // produtoToolStripMenuItem
             // 
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
             this.produtoToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.produtoToolStripMenuItem.Text = "&Produto";
+            this.produtoToolStripMenuItem.Click += new System.EventHandler(this.produtoToolStripMenuItem_Click);
             // 
             // gerarArquivoToolStripMenuItem
             // 
             this.gerarArquivoToolStripMenuItem.Name = "gerarArquivoToolStripMenuItem";
             this.gerarArquivoToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.gerarArquivoToolStripMenuItem.Text = "&Gerar Arquivo!";
+            this.gerarArquivoToolStripMenuItem.Click += new System.EventHandler(this.gerarArquivoToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 

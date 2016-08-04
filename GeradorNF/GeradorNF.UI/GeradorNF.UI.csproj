@@ -50,11 +50,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmDestinatario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDestinatario.Designer.cs">
+      <DependentUpon>frmDestinatario.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEmitente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmEmitente.Designer.cs">
       <DependentUpon>frmEmitente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGeradorArquivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGeradorArquivo.Designer.cs">
+      <DependentUpon>frmGeradorArquivo.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
@@ -62,14 +74,38 @@
     <Compile Include="frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProduto.Designer.cs">
+      <DependentUpon>frmProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTransporador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTransporador.Designer.cs">
+      <DependentUpon>frmTransporador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidade.cs" />
+    <EmbeddedResource Include="frmDestinatario.resx">
+      <DependentUpon>frmDestinatario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEmitente.resx">
       <DependentUpon>frmEmitente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmGeradorArquivo.resx">
+      <DependentUpon>frmGeradorArquivo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProduto.resx">
+      <DependentUpon>frmProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTransporador.resx">
+      <DependentUpon>frmTransporador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
