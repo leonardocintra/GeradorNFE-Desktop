@@ -141,7 +141,6 @@ namespace GeradorNF.UI
                     MessageBox.Show("Erro ao fazer operação no Produto");
                 }
 
-                MessageBox.Show("Produto " + mensagemCrud + " com sucesso!", "Produto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 LimpaCampos();
                 PreencherGrid();
                 btnSalvar.Enabled = false;
@@ -153,9 +152,9 @@ namespace GeradorNF.UI
         }
 
 
-        private void PreencherGrid()
+        private async void PreencherGrid()
         {
-            //dataGridProduto.DataSource = ProdutoBLL.BuscarProduto();
+            dataGridProduto.DataSource = await ProdutoBLL.GetProdutoBLL();
         }
         #endregion
 
@@ -169,6 +168,11 @@ namespace GeradorNF.UI
                     SetProduto(Enuns.TipoCrud.novo);
             }
             btnSalvar.Enabled = true;
+        }
+
+        private void frmProduto_Load(object sender, EventArgs e)
+        {
+            PreencherGrid();
         }
     }
 }

@@ -11,6 +11,12 @@ namespace GeradorNF.BLL
 {
     public class ProdutoBLL
     {
+        public static async Task<List<Produto>> GetProdutoBLL()
+        {
+            return await ProdutoDAO.GetProdutoDAO();
+        }
+
+
         public static async Task<HttpResponseMessage> AdicionarProdutoBLL(Produto produto)
         {
             if (produto.Descricao == string.Empty)
