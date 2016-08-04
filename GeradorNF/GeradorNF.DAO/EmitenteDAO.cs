@@ -34,7 +34,6 @@ namespace GeradorNF.DAO
             {
                 throw new Exception("Exception - Não foi possivel buscar os Emitentes. Erro: " + ex.Message);
             }
-
         }
 
         /// <summary>

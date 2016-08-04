@@ -9,7 +9,7 @@ namespace GeradorNF.Model
 {
     public class Produto
     {
-        [JsonProperty("")]
+        [JsonProperty("id")]
         public int Id { get; set; }
 
         [JsonProperty("CFOP")]

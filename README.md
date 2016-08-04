@@ -3,6 +3,10 @@ Esse é um simples gerador de arquivo.txt que é enviado para o WebService da Re
 
 Pra você que esta isento de muitos impostos, que coloca tudo "zero" nos campos de ICMS, IPI e fica sofrendo tendo que cadastrar todos os dados, esse sistema pode te ajudar a automatizar, pois ele gera apenas um arquivo txt que é enviado para o WS.
 
+## Screenshot
+![image](https://cloud.githubusercontent.com/assets/5832193/17415165/fb2cec2c-5a5e-11e6-9f91-9701bd9d7daf.png)
+
+
 ## Como usar
 
 ### Para contribuir / rodar local
