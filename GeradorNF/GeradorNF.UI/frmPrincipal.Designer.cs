@@ -104,6 +104,7 @@
             this.transportadoraToolStripMenuItem.Name = "transportadoraToolStripMenuItem";
             this.transportadoraToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.transportadoraToolStripMenuItem.Text = "&Transportadora";
+            this.transportadoraToolStripMenuItem.Click += new System.EventHandler(this.transportadoraToolStripMenuItem_Click);
             // 
             // destinatarioToolStripMenuItem
             // 
@@ -117,6 +118,7 @@
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
             this.produtoToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.produtoToolStripMenuItem.Text = "&Produto";
+            this.produtoToolStripMenuItem.Click += new System.EventHandler(this.produtoToolStripMenuItem_Click);
             // 
             // gerarArquivoToolStripMenuItem
             // 

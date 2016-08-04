@@ -30,5 +30,19 @@ namespace GeradorNF.UI
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void transportadoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTransporador frm = new frmTransporador();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProduto frm = new frmProduto();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }
