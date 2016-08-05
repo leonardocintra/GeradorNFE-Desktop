@@ -234,6 +234,7 @@
             this.linkCpfCnpj.TabIndex = 52;
             this.linkCpfCnpj.TabStop = true;
             this.linkCpfCnpj.Text = "Usar CPF";
+            this.linkCpfCnpj.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkCpfCnpj_LinkClicked);
             // 
             // groupBox2
             // 
@@ -491,6 +492,7 @@
             this.btnNovo.TabIndex = 78;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnSalvar
             // 
@@ -517,6 +519,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(680, 160);
             this.dataGridView1.TabIndex = 77;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // groupBox3
             // 
