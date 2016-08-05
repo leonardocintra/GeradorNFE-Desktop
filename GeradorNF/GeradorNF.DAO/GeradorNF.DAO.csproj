@@ -53,6 +53,7 @@
     <Compile Include="EnderecoDAO.cs" />
     <Compile Include="ProdutoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TransportadorDAO.cs" />
     <Compile Include="UtilDAO.cs" />
   </ItemGroup>
   <ItemGroup>
