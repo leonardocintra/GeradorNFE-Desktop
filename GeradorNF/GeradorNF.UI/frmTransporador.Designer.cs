@@ -94,6 +94,7 @@
             this.linkPesquisaCEP.TabIndex = 45;
             this.linkPesquisaCEP.TabStop = true;
             this.linkPesquisaCEP.Text = "Pesquisar";
+            this.linkPesquisaCEP.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkPesquisaCEP_LinkClicked_1);
             // 
             // txtNumero
             // 
@@ -383,6 +384,7 @@
             this.btnSalvar.TabIndex = 73;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // dataGridView1
             // 
@@ -432,6 +434,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmTransporador";
             this.Text = "frmTransporador";
+            this.Load += new System.EventHandler(this.frmTransporador_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);

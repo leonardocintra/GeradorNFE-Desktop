@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -53,6 +54,105 @@ namespace GeradorNF.UI
         }
 
         #region methods privates
+        private async void SetTranportadora(Enuns.TipoCrud tipoCrud)
+        {
+            string mensagemException = Utilidade.GetMensagemParaException(tipoCrud);
+            string mensagemCrud = Utilidade.GetMensagemParaCrud(tipoCrud);
+
+            try
+            {
+                Transportador transportador = new Transportador();
+
+                #region set parameters
+                transportador.Cidade = txtCidade.Text;
+                transportador.CidadeCodigo = Convert.ToInt32(txtCodigoCidade.Text);
+                transportador.CPF_CNPJ = txtCNPJ.Text;
+                transportador.Endereco = txtEndereco.Text;
+                transportador.FretePorConta = cbxFretePorConta.Checked;
+                transportador.InscricaoEstadual = txtInscricaoEstadual.Text;
+                transportador.NomeRazao = txtNomeRazao.Text;
+                transportador.UF = txtEstado.Text;
+                transportador.CEP = txtCEP.Text;
+
+                #endregion
+
+                HttpResponseMessage response = new HttpResponseMessage();
+
+                if (tipoCrud.Equals(Enuns.TipoCrud.novo))
+                {
+                    response = await TransportadorBLL.AdicionarTransportadorBLL(transportador);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Tranportador " + mensagemCrud + " com sucesso!", "Tranportador", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        LimpaCampos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocorreu um erro ao " + mensagemException + " o transportador! \nErro: " + response.RequestMessage, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else if (tipoCrud.Equals(Enuns.TipoCrud.update))
+                {
+                    response = await TransportadorBLL.AtualizarTransportadorBLL(transportador);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Tranportador " + mensagemCrud + " com sucesso!", "Tranportador", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        LimpaCampos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocorreu um erro ao " + mensagemException + " o transportador! \nErro: " + response.RequestMessage, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else if (tipoCrud.Equals(Enuns.TipoCrud.delete))
+                {
+                    transportador.Id = Convert.ToInt32(txtIdTransportador.Text);
+                    response = await TransportadorBLL.DeletarTransportadorBLL(transportador.Id);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Tranportador " + mensagemCrud + " com sucesso!", "Tranportador", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        LimpaCampos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocorreu um erro ao " + mensagemException + " o transportador! \nErro: " + response.RequestMessage, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao fazer operação no Tranportador");
+                    return;
+                }
+
+                PreencherGrid();
+                btnSalvar.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro ao " + mensagemException + " o transportador! \nErro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PreencherGrid()
+        {
+            GetTransportador();
+        }
+
+        private async void GetTransportador()
+        {
+            try
+            {
+                dataGridView1.DataSource = await TransportadorBLL.GetTransportadorBLL();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void LimpaCampos()
         {
             txtIdTransportador.Clear();
@@ -103,7 +203,7 @@ namespace GeradorNF.UI
             txtCodigoCidade.Text = dataGridView1[6, dataGridView1.CurrentRow.Index].Value.ToString();
             txtCidade.Text = dataGridView1[7, dataGridView1.CurrentRow.Index].Value.ToString();
             txtEstado.Text = dataGridView1[8, dataGridView1.CurrentRow.Index].Value.ToString();
-            txtCEP.Text = dataGridView1[18, dataGridView1.CurrentRow.Index].Value.ToString();
+            txtCEP.Text = dataGridView1[10, dataGridView1.CurrentRow.Index].Value.ToString();
         }
 
         private void linkPesquisaCEP_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -140,6 +240,55 @@ namespace GeradorNF.UI
                 linkPesquisaCEP.Text = "Pesquisar";
                 txtCEP.Focus();
             }
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            if (lblAcao.Text.Equals("Editar"))
+                SetTranportadora(Enuns.TipoCrud.update);
+            else
+                SetTranportadora(Enuns.TipoCrud.novo);
+        }
+
+        private void linkPesquisaCEP_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Endereco endereco = new Endereco();
+            EnderecoBLL enderecoBLL = new EnderecoBLL();
+
+            linkPesquisaCEP.Text = "Aguarde ...";
+            DesbloquearCamposEndereco(false);
+
+            try
+            {
+                endereco = enderecoBLL.BuscarDadosCEP(txtCEP.Text);
+
+                txtEndereco.Text = endereco.Logradouro;
+                txtCidade.Text = endereco.Localidade;
+                txtEstado.Text = endereco.UF;
+                txtCodigoCidade.Text = endereco.IBGE;
+
+                if (endereco.CEP == null)
+                {
+                    MessageBox.Show("CEP não encontrado ou inválido! Tente novamente", "CEP não encontrado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    txtCEP.Clear();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao buscar CEP! \nErro: " + ex.Message, "Erro CEP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                DesbloquearCamposEndereco(true);
+                linkPesquisaCEP.Text = "Pesquisar";
+                txtCEP.Focus();
+            }
+        }
+
+        private void frmTransporador_Load(object sender, EventArgs e)
+        {
+            PreencherGrid();
         }
     }
 }
