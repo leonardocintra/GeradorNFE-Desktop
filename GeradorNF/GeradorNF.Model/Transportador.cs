@@ -36,6 +36,9 @@ namespace GeradorNF.Model
         [JsonProperty("uf")]
         public string UF { get; set; }
 
+        [JsonProperty("cep")]
+        public string CEP { get; set; }
+
         [JsonProperty("data_cadastro")]
         public DateTime DataCadastro { get; set; }
     }

@@ -16,13 +16,29 @@ namespace GeradorNF.BLL
             return await ProdutoDAO.GetProdutoDAO();
         }
 
-
         public static async Task<HttpResponseMessage> AdicionarProdutoBLL(Produto produto)
         {
             if (produto.Descricao == string.Empty)
                 throw new Exception("Nome do produto é obrigatório!");
 
             return await ProdutoDAO.AdicionarProdutoDAO(produto);
+        }
+
+        public static async Task<HttpResponseMessage> DeletarProdutoBLL(int id)
+        {
+            if (id < 1)
+                throw new Exception("O Produto não pode ser zero ou negativo. Verifique");
+
+            return await ProdutoDAO.DeletarProdutoDAO(id);
+
+        }
+
+        public static async Task<HttpResponseMessage> AtualizarProdutoBLL(Produto produto)
+        {
+            if (produto.Descricao == string.Empty)
+                throw new Exception("Nome do produto é obrigatório!");
+
+            return await ProdutoDAO.AtualizarProdutoDAO(produto);
         }
     }
 }
