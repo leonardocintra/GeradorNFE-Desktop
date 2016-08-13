@@ -15,6 +15,9 @@ namespace GeradorNF.Model
         [JsonProperty("cnpj")]
         public string CNPJ { get; set; }
 
+        [JsonProperty("inscricao_estadual")]
+        public string InscricaoEstadual { get; set; }
+
         [JsonProperty("indicador_ie_destinatario")]
         public int? IndIEDest { get; set; }
 
