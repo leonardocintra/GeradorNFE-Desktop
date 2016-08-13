@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DestinatarioBLL.cs" />
     <Compile Include="EmitenteBLL.cs" />
     <Compile Include="EnderecoBLL.cs" />
     <Compile Include="ProdutoBLL.cs" />
