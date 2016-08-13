@@ -157,6 +157,7 @@ namespace GeradorNF.UI
                 emitente.Logradouro = txtEndereco.Text;
                 emitente.NumeroCasa = txtNumero.Text;
                 emitente.UF = txtEstado.Text;
+                emitente.Cliente = MyGlobals.Cliente;
                 #endregion
 
                 HttpResponseMessage response = new HttpResponseMessage();
@@ -328,6 +329,11 @@ namespace GeradorNF.UI
             DesbloquearCampos(true);
             lblAcao.Text = "editar";
             txtNomeRazao.Focus();
+        }
+
+        private void btnFiltro_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractCrud.cs" />
+    <Compile Include="ClienteDAO.cs" />
     <Compile Include="EmitenteDAO.cs" />
     <Compile Include="EnderecoDAO.cs" />
     <Compile Include="ProdutoDAO.cs" />

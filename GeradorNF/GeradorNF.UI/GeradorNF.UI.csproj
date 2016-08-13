@@ -92,6 +92,7 @@
     <Compile Include="frmTransporador.Designer.cs">
       <DependentUpon>frmTransporador.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyGlobals.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidade.cs" />
