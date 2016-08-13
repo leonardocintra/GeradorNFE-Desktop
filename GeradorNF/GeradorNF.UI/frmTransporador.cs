@@ -73,6 +73,7 @@ namespace GeradorNF.UI
                 transportador.NomeRazao = txtNomeRazao.Text;
                 transportador.UF = txtEstado.Text;
                 transportador.CEP = txtCEP.Text;
+                transportador.Cliente = MyGlobals.Cliente;
 
                 #endregion
 

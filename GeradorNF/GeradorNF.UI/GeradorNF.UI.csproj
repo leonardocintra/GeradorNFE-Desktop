@@ -68,6 +68,12 @@
     <Compile Include="frmGeradorArquivo.Designer.cs">
       <DependentUpon>frmGeradorArquivo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,7 @@
     <Compile Include="frmTransporador.Designer.cs">
       <DependentUpon>frmTransporador.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyGlobals.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidade.cs" />
@@ -97,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmGeradorArquivo.resx">
       <DependentUpon>frmGeradorArquivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>

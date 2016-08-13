@@ -65,5 +65,8 @@ namespace GeradorNF.Model
 
         [JsonProperty("data_cadastro")]
         public DateTime DataCadastro { get; set; }
+
+        [JsonProperty("cliente")]
+        public string Cliente { get; set; }
     }
 }

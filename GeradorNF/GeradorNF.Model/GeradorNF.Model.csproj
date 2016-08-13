@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cliente.cs" />
     <Compile Include="Destinatario.cs" />
     <Compile Include="Emitente.cs" />
     <Compile Include="Endereco.cs" />

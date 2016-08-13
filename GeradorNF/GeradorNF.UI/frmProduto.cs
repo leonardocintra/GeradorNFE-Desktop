@@ -65,7 +65,7 @@ namespace GeradorNF.UI
 
         private bool VerificarCamposObrigatorios()
         {
-            bool _return;
+            bool _return = true;
 
             if (string.IsNullOrEmpty(txtValorUnitario.Text))
             {
@@ -77,14 +77,29 @@ namespace GeradorNF.UI
                 _return = false;
                 MessageBox.Show("Decrição do produto é obrigatório ou é menor que 3 caracteres!");
             }
-            else if (Convert.ToDecimal(txtValorUnitario.Text) <= 0)
+            else if (txtValorUnitario.Text != string.Empty)
             {
-                _return = false;
-                MessageBox.Show("Valor unitário não pode ser zero ou negativo.");
-            }
-            else
-            {
-                _return = true;
+                try
+                {
+                    decimal valorUnitario = Convert.ToDecimal(txtValorUnitario.Text);
+
+                    if (valorUnitario <= 0)
+                    {
+                        MessageBox.Show("Valor unitário não pode ser zero ou negativo.");
+                        _return = false;
+                    }
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("Verifique se digitou numeros válidos no campo Valor Unitario!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtValorUnitario.Focus();
+                    _return = false;
+                }
+                catch(Exception ex)
+                {
+                    _return = false;
+                    MessageBox.Show("Erro: " + ex.Message);
+                }                
             }
 
             return _return;
@@ -106,6 +121,7 @@ namespace GeradorNF.UI
                 produto.NCM = Convert.ToInt32(txtNCM.Text);
                 produto.Unidade = txtUnidade.Text;
                 produto.ValorUnitario = Convert.ToDecimal(txtValorUnitario.Text);
+                produto.Cliente = MyGlobals.Cliente;
 
                 #endregion
 
@@ -125,17 +141,36 @@ namespace GeradorNF.UI
                     }
 
                 }
-                //else if (tipoCrud.Equals(Enuns.TipoCrud.update))
-                //{
-                //    produto.ProdutoId = int.Parse(txtIdProduto.Text);
-                //    ProdutoBLL.AtualizarProduto(produto);
+                else if (tipoCrud.Equals(Enuns.TipoCrud.update))
+                {
+                    
+                    produto.Id = int.Parse(txtIdProduto.Text);
+                    response = await ProdutoBLL.AtualizarProdutoBLL(produto);
 
-                //}
-                //else if (tipoCrud.Equals(Enuns.TipoCrud.delete))
-                //{
-                //    produto.ProdutoId = int.Parse(txtIdProduto.Text);
-                //    ProdutoBLL.ExcluirProduto(produto);
-                //}
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Produto " + mensagemCrud + " com sucesso!", "Produto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocorreu um erro ao " + mensagemException + " o produto! \nErro: " + response.RequestMessage, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+                else if (tipoCrud.Equals(Enuns.TipoCrud.delete))
+                {
+                    produto.Id = int.Parse(txtIdProduto.Text);
+                    response = await ProdutoBLL.DeletarProdutoBLL(produto.Id);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Produto " + mensagemCrud + " com sucesso!", "Produto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocorreu um erro ao " + mensagemException + " o produto! \nErro: " + response.RequestMessage, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
                 else
                 {
                     MessageBox.Show("Erro ao fazer operação no Produto");
@@ -173,6 +208,46 @@ namespace GeradorNF.UI
         private void frmProduto_Load(object sender, EventArgs e)
         {
             PreencherGrid();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            btnSalvar.Enabled = true;
+            DesbloquearCampos(true);
+            lblAcao.Text = "Editar";
+            txtDescricao.Focus();
+        }
+
+        private void dataGridProduto_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            txtIdProduto.Text = dataGridProduto[0, dataGridProduto.CurrentRow.Index].Value.ToString();
+            txtCFOP.Text = dataGridProduto[1, dataGridProduto.CurrentRow.Index].Value.ToString();
+            txtEAN.Text = dataGridProduto[2, dataGridProduto.CurrentRow.Index].Value.ToString();
+            txtNCM.Text = dataGridProduto[3, dataGridProduto.CurrentRow.Index].Value.ToString();
+            txtDescricao.Text = dataGridProduto[4, dataGridProduto.CurrentRow.Index].Value.ToString();
+            txtUnidade.Text = dataGridProduto[5, dataGridProduto.CurrentRow.Index].Value.ToString();
+            txtValorUnitario.Text = dataGridProduto[6, dataGridProduto.CurrentRow.Index].Value.ToString();
+
+            btnEditar.Enabled = true;
+            btnExcluir.Enabled = true;
+
+            DesbloquearCampos(false);
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Deseja excluir esse Produto?", "Exluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    SetProduto(Enuns.TipoCrud.delete);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao excluir: Erro " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

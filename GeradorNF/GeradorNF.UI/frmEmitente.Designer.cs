@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtIdEmitente = new System.Windows.Forms.TextBox();
             this.lblIdEmitente = new System.Windows.Forms.Label();
@@ -369,6 +369,7 @@
             this.btnFiltro.TabIndex = 62;
             this.btnFiltro.Text = "Filtrar";
             this.btnFiltro.UseVisualStyleBackColor = true;
+            this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
             // 
             // btnExcluir
             // 
@@ -424,8 +425,8 @@
             this.dataGridEmitente.AllowUserToDeleteRows = false;
             this.dataGridEmitente.AllowUserToOrderColumns = true;
             this.dataGridEmitente.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridEmitente.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dataGridEmitente.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridEmitente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));

@@ -26,10 +26,9 @@ namespace GeradorNF.DAO
                     return Newtonsoft.Json.JsonConvert.DeserializeObject<List<E>>(json).ToList();
                 }
                 else
-                    return null;
+                    throw new Exception(response.RequestMessage.ToString());
             }
         }
-
 
         public static async Task<HttpResponseMessage> Add<E>(E entity, string entityURL) where E : class
         {

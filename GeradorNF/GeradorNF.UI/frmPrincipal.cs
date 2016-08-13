@@ -51,5 +51,15 @@ namespace GeradorNF.UI
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
