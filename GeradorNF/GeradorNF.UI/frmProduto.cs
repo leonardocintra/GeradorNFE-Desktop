@@ -89,7 +89,7 @@ namespace GeradorNF.UI
                         _return = false;
                     }
                 }
-                catch (FormatException ex)
+                catch (FormatException)
                 {
                     MessageBox.Show("Verifique se digitou numeros válidos no campo Valor Unitario!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtValorUnitario.Focus();

@@ -8,23 +8,26 @@
         Title="Gerador de NF - e" Height="350" Width="525" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="15"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="120"></ColumnDefinition>
             <ColumnDefinition Width="15"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="120"></ColumnDefinition>
             <ColumnDefinition Width="15"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="120"></ColumnDefinition>
+            <ColumnDefinition Width="15"></ColumnDefinition>
+            <ColumnDefinition Width="120"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="15"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="85"></RowDefinition>
             <RowDefinition Height="15"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="85"></RowDefinition>
             <RowDefinition Height="15"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="85"></RowDefinition>
             <RowDefinition Height="15"></RowDefinition>
         </Grid.RowDefinitions>
-        
+
+        <Button Grid.Column="1" Grid.Row="1" Content="Cliente"></Button>
+        <Button Grid.Column="3" Grid.Row="1" Content="Transportadora"></Button>
     </Grid>
 </Window>
