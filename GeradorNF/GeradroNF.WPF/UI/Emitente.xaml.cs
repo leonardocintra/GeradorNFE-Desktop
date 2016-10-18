@@ -1,4 +1,5 @@
-﻿using GeradroNF.WPF.ViewModel;
+﻿using GeradorNF.BLL;
+using GeradroNF.WPF.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,30 +12,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GeradroNF.WPF
+namespace GeradroNF.WPF.UI
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Emitente.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Emitente : Window
     {
-        public MainWindow()
+        public Emitente()
         {
             InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            EmitenteViewModel emitenteViewModel = new EmitenteViewModel();
+            emitenteViewModel.LoadEmitente();
+            EmitenteView.DataContext = emitenteViewModel;
+            //GetEmitente();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void GetEmitente()
         {
-            UI.Emitente frm = new UI.Emitente();
-            frm.Show();
+            dataGridEmitente.ItemsSource = await EmitenteBLL.GetEmitenteBLL();
         }
     }
 }

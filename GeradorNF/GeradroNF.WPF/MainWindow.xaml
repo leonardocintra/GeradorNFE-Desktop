@@ -4,7 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GeradroNF.WPF"
+        xmlns:view="clr-namespace:GeradroNF.WPF.View"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="Gerador de NF - e" Height="350" Width="525" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -29,5 +31,6 @@
 
         <Button Grid.Column="1" Grid.Row="1" Content="Cliente"></Button>
         <Button Grid.Column="3" Grid.Row="1" Content="Transportadora"></Button>
+        <Button Grid.Column="5" Grid.Row="1" Content="Emitente" Click="Button_Click"></Button>
     </Grid>
 </Window>

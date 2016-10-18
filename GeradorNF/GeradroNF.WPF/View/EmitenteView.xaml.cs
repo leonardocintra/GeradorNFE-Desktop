@@ -1,5 +1,4 @@
-﻿using GeradroNF.WPF.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,27 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GeradroNF.WPF
+namespace GeradroNF.WPF.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for EmitenteView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EmitenteView : UserControl
     {
-        public MainWindow()
+        public EmitenteView()
         {
             InitializeComponent();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            UI.Emitente frm = new UI.Emitente();
-            frm.Show();
         }
     }
 }
