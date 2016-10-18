@@ -1,0 +1,29 @@
+﻿<Window x:Class="GeradroNF.WPF.UI.Emitente"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GeradroNF.WPF.UI"
+        mc:Ignorable="d"
+        xmlns:view="clr-namespace:GeradroNF.WPF.View"
+        Loaded="Window_Loaded"
+        Title="Emitente" Height="350" Width="525" WindowStartupLocation="CenterScreen">
+    <Grid d:DataContext="{Binding}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="460*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
+        <Border CornerRadius="5" BorderBrush="SteelBlue" BorderThickness="2" Grid.Row="0">
+            <Label Height="30" Width="400" Content="Exemplo de utilização do Padrão MVVM - WPF" Background="Aqua"/>
+        </Border>
+        <Border CornerRadius="5" BorderBrush="SteelBlue" BorderThickness="2" Grid.Row="1" Margin="0,5,0,0" Background="Beige">
+            <view:EmitenteView x:Name="EmitenteView"></view:EmitenteView>
+        </Border>
+        <DataGrid Visibility="Collapsed" Name="dataGridEmitente">
+        </DataGrid>
+
+    </Grid>
+</Window>

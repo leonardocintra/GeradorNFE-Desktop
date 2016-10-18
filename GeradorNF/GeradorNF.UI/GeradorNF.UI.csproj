@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GeradorNF.UI</RootNamespace>
     <AssemblyName>GeradorNF.UI</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -142,17 +143,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\searchIco.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\GeradorNF.BLL\GeradorNF.BLL.csproj">
       <Project>{9c31804c-7884-4fd4-8de8-b2e94866c161}</Project>
       <Name>GeradorNF.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GeradorNF.DAO\GeradorNF.DAO.csproj">
+      <Project>{138da074-e7f5-472a-a213-a0c4e90c6cc2}</Project>
+      <Name>GeradorNF.DAO</Name>
     </ProjectReference>
     <ProjectReference Include="..\GeradorNF.Model\GeradorNF.Model.csproj">
       <Project>{87481052-017f-40f4-a45f-7f5c94117b8a}</Project>
       <Name>GeradorNF.Model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\searchIco.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

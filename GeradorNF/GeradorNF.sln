@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeradorNF.UI", "GeradorNF.UI\GeradorNF.UI.csproj", "{4214660E-6EF0-482A-9817-D9FC7D5A99CA}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeradorNF.DAO", "GeradorNF.DAO\GeradorNF.DAO.csproj", "{138DA074-E7F5-472A-A213-A0C4E90C6CC2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeradorNF.Tests", "GeradorNF.Tests\GeradorNF.Tests.csproj", "{0C1BDCF0-7AF6-4763-8ECD-A6E7C323904F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeradroNF.WPF", "GeradroNF.WPF\GeradroNF.WPF.csproj", "{528E5E7A-C307-461F-976B-E6E0FC835491}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{0C1BDCF0-7AF6-4763-8ECD-A6E7C323904F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C1BDCF0-7AF6-4763-8ECD-A6E7C323904F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C1BDCF0-7AF6-4763-8ECD-A6E7C323904F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{528E5E7A-C307-461F-976B-E6E0FC835491}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{528E5E7A-C307-461F-976B-E6E0FC835491}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{528E5E7A-C307-461F-976B-E6E0FC835491}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{528E5E7A-C307-461F-976B-E6E0FC835491}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

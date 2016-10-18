@@ -4,11 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace GeradorNF.Model
 {
-    public class Emitente
+    public class Emitente : INotifyPropertyChanged
     {
+        private string _razaoSocial;
+        private string _logradouro;
+
         [JsonProperty("id")]
         public int Id { get; set; }
 
@@ -19,7 +23,18 @@ namespace GeradorNF.Model
         public string InscricaoEstadual { get; set; }
 
         [JsonProperty("nome_razao")]
-        public string RazaoSocial { get; set; }
+        public string RazaoSocial
+        {
+            get { return _razaoSocial; }
+            set
+            {
+                if (_razaoSocial != value)
+                {
+                    _razaoSocial = value;
+                    RaiseProperyChanged("RazaoSocial");
+                }
+            }
+        }
 
         [JsonProperty("nome_fantasia")]
         public string NomeFantasia { get; set; }
@@ -31,7 +46,18 @@ namespace GeradorNF.Model
         public string CEP { get; set; }
 
         [JsonProperty("logradouro")]
-        public string Logradouro { get; set; }
+        public string Logradouro
+        {
+            get { return _logradouro; }
+            set
+            {
+                if (_logradouro != value)
+                {
+                    _logradouro = value;
+                    RaiseProperyChanged("Logradouro");
+                }
+            }
+        }
 
         [JsonProperty("numero_casa")]
         public string NumeroCasa { get; set; }
@@ -68,5 +94,15 @@ namespace GeradorNF.Model
 
         [JsonProperty("cliente")]
         public string Cliente { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void RaiseProperyChanged(string property)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(property));
+            }
+        }
     }
 }

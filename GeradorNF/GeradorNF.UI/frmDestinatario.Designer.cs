@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label13 = new System.Windows.Forms.Label();
             this.lblAcao = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -268,8 +268,8 @@
             this.dataGridDestinatario.AllowUserToDeleteRows = false;
             this.dataGridDestinatario.AllowUserToOrderColumns = true;
             this.dataGridDestinatario.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridDestinatario.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dataGridDestinatario.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridDestinatario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -545,6 +545,7 @@
             this.Name = "frmDestinatario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Geranciamento de Destinatario";
+            this.Load += new System.EventHandler(this.frmDestinatario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDestinatario)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
