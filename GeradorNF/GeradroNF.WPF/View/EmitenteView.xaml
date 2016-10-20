@@ -7,21 +7,26 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Grid>
-            <StackPanel >
-                <ItemsControl ItemsSource="{Binding Path=Emitentes}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Column="0" Grid.Row="0">
+            <ItemsControl ItemsSource="{Binding Path=Emitentes}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
                             <StackPanel Orientation="Horizontal">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBox Text="{Binding RazaoSocial, Mode=TwoWay}" Width="100" Margin="3 5 3 5" />
-                                    <TextBox Text="{Binding Logradouro, Mode=TwoWay}" Width="100" Margin="0 5 3 5" />
-                                </StackPanel>
+                                <TextBox Text="{Binding RazaoSocial, Mode=TwoWay}" Width="100" Margin="3 5 3 5" />
+                                <TextBox Text="{Binding Logradouro, Mode=TwoWay}" Width="100" Margin="0 5 3 5" />
                             </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </StackPanel>
-        </Grid>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
     </Grid>
 </UserControl>

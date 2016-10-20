@@ -31,12 +31,6 @@ namespace GeradroNF.WPF.UI
             EmitenteViewModel emitenteViewModel = new EmitenteViewModel();
             emitenteViewModel.LoadEmitente();
             EmitenteView.DataContext = emitenteViewModel;
-            //GetEmitente();
-        }
-
-        private async void GetEmitente()
-        {
-            dataGridEmitente.ItemsSource = await EmitenteBLL.GetEmitenteBLL();
         }
     }
 }

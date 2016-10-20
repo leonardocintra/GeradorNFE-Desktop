@@ -59,6 +59,7 @@
     <Compile Include="UI\Emitente.xaml.cs">
       <DependentUpon>Emitente.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UtilClass.cs" />
     <Compile Include="ViewModel\EmitenteViewModel.cs" />
     <Compile Include="View\EmitenteView.xaml.cs">
       <DependentUpon>EmitenteView.xaml</DependentUpon>

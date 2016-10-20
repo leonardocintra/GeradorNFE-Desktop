@@ -22,8 +22,5 @@
         <Border CornerRadius="5" BorderBrush="SteelBlue" BorderThickness="2" Grid.Row="1" Margin="0,5,0,0" Background="Beige">
             <view:EmitenteView x:Name="EmitenteView"></view:EmitenteView>
         </Border>
-        <DataGrid Visibility="Collapsed" Name="dataGridEmitente">
-        </DataGrid>
-
     </Grid>
 </Window>
